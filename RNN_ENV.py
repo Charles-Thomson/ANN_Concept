@@ -1,3 +1,89 @@
+"""
+
+https://www.oreilly.com/radar/reinforcement-learning-for-complex-goals-using-tensorflow/
+Environment used by the Q Learning process
+
+class MazeEnv()
+
+init()
+
+Variables
+
+npMap - numpyArray -> takes the given map and coverts to np array.
+RootOfMapSize- int -> The square root of the size of the map
+npMap - reshape -> mpMap reshaped to the size value of RootOfMapSize, giving a
+                   'square' of nested lists
+nrows, ncols - int -> Number of rows and cols in npMap
+goal_state_coords - tuple(int,int) -> The coords of the 'goal' node in the map
+                                      (Value = 3 )
+
+goal_state - int -> The single value denoting the state of the goal node, i.e
+                    where in the 'map' using
+                    a single int value
+
+agent_start_coords - tuple -> The starting coords of the agent
+agent_start_state - int -> The single value denoting the state of the agent
+                           node, i.e where in the 'map' using
+                    a single int value
+
+agent_current_state/agent_current_coords -> the current state and coords
+                                            of the agent
+
+observation_space - int -> The number of possible states of the agent,
+                           each node is a possible state.
+action_space - int -> The number of possible acitons for the agent
+
+EPISODE_LENGTH - int -> The length of each possible episode
+                        i.e max possible steps before reset of agent
+goal_reached - bool -> flag to indicate if the 'goal' node has been reached
+                       by the agent
+
+check_if_goal_reached()
+Check if the goal node has been reached by the agent
+
+step()
+Called by the NN , takes a given action
+-> action is mapped from an int value to a new x,y (row,col) coords value
+-> EPISODE_LENGTH decrimented
+-> termination flag check
+-> Calculate reward
+                   -> calls calculate_reward()
+                   -> calls check_if_goal_reached()
+-> returns agent_current_state(int) , reward(int) , terminated(bool),
+           info(Filler), goal_reached(bool)
+
+action_mapping()
+-> takes an 'action'(int) and mapps to the relervent movemet of the agent
+
+- Does not function as normal x,y as it starts top left
+        - to move from (0,0) to (0,1) is to add to the column
+        - to move from (0,0) to (1,0) is to add to the row
+        - Your moving row/col not adding to the value of it if that makes sence
+        - if "up" - take from row
+        - if "down" - add to row
+        - if "left" - take from col
+        - if "right" - add to col
+
+calculate_reward()
+Calculates the reward given to the agent for moving to a specific state
+step_bounus -> given to encorage movment by giving deminishing reward per step
+case x -> x refers to the state of each node,
+          i.e 2 is an obstical, 3 is the goal node
+
+termination_check()
+Checks a number of cases in which the agent will be terminated
+-> try used as the call for .any() on np arracy casued issues
+
+render ()
+Renders elements of the data i.e he map and nodes states key
+
+reset()
+Reset the env
+-> returns all vars to starting values
+-> returns agent to start location
+"""
+
+import math
 import numpy as np
 from gym import Env
 from gym.spaces import Discrete
@@ -7,8 +93,16 @@ from gym.spaces import Discrete
 class MazeEnv(Env):
     def __init__(self, MAP) -> None:
 
+        print(MAP, type(MAP))
+
         # turn the map into a np array
         self.npMAP = np.array(MAP)
+        print(type(self.npMAP), self.npMAP.shape, self.npMAP)
+
+        RootOfMapSize = int(math.sqrt(len(self.npMAP)))
+
+        self.npMAP = self.npMAP.reshape(RootOfMapSize, RootOfMapSize)
+        print(type(self.npMAP), self.npMAP.shape, self.npMAP)
 
         # Number of rows and cols
         self.nrow, self.ncol = self.npMAP.shape
@@ -21,7 +115,7 @@ class MazeEnv(Env):
             self.goal_state_coords[0] * self.ncol
         ) + self.goal_state_coords[
             1
-        ]  #  ncol * x  + y
+        ]  # ncol * x  + y
 
         # Agent starting state
         agent_start_coords = np.where(self.npMAP == 0)
@@ -54,7 +148,7 @@ class MazeEnv(Env):
         if self.agent_current_state == self.goal_state:
             self.goal_reached = True
 
-    def step(self, action: int) -> tuple[int, int, bool, dict, bool]:
+    def step(self, action: int) -> tuple[int, float, bool, list, bool]:
 
         # Update the self.state based on the given action
         self.action_mapping(action)
@@ -78,25 +172,10 @@ class MazeEnv(Env):
         return self.agent_current_state, reward, terminated, info, self.goal_reached
 
     def action_mapping(self, action: int) -> None:
-        # Currently hard coded to a 5x5 map - the inverse addition is given as te map starts top left as 0,0 -
-        # to go down adds to y to go up takes from y
 
         # Mapps the action to the change in the state and the state coords
         # Returns -> new state
         # updates -> state_coords
-
-        """
-        Hurt my brain with this one
-        - Does not function as normal x,y as it starts top left
-        - to move from (0,0) to (0,1) is to add to the column
-        - to move from (0,0) to (1,0) is to add to the row
-        - Your moving row/col not adding to the value of it if that makes sence
-        - if it hs "up" - take from row
-        - if it hs "down" - add to row
-        - if it hs "left" - take from col
-        - if it hs "right" - add to col
-
-        """
 
         row, col = self.agent_current_coords
         state = self.agent_current_state
@@ -141,7 +220,8 @@ class MazeEnv(Env):
                 self.agent_current_state = state + 6
 
     # Reward given per step, per goal and for end goal
-    def calculate_reward(self) -> int:
+    # rework based on step taken as time, gamma^time *r <- also gives the utility
+    def calculate_reward(self) -> float:
         current_environment_location = self.npMAP[self.agent_current_coords]
 
         step_bonus = (51 - self.EPISODE_LENGTH) / 100
@@ -155,6 +235,7 @@ class MazeEnv(Env):
                 return 0
             case 3:
                 return step_bonus + 1000
+        return 0
 
     # Terminate if episod length = 0, agent killed, agent reached end goal
     def termination_check(self) -> bool:
@@ -169,7 +250,6 @@ class MazeEnv(Env):
             (self.agent_current_state < 0),
             (self.agent_current_state > 25),
             (self.EPISODE_LENGTH == 0),
-            # (self.agent_current_coords == self.goal_node), goal reached condition causing issue in termination
             (self.agent_current_coords[0] < 0),
             (self.agent_current_coords[0] > 25),
             (self.agent_current_coords[1] < 0),
@@ -187,12 +267,12 @@ class MazeEnv(Env):
         print(self.npMAP)
         print(
             """
-        Key; 
-        0 - Agent Start 
+        Key;
+        0 - Agent Start
         1 - Open Tile
         2 - Wall / Obstruction
         3 - Finish / Goal
-        4 - Agent State / Agent Location 
+        4 - Agent State / Agent Location
         """
         )
 

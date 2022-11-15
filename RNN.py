@@ -1,11 +1,73 @@
+"""
+Neural network - Reinforcment learning -> Q Learning
+
+nerual_network_parameters -> Data Class
+Used to store the parameters used by the Q Learning algorithm
+
+Variables 
+
+EPISODES - int -> the number of episodes in the process i.e the lenght of the process
+GAMMA - float -> The weight placed on future rewards for the agent
+LEARNING_RATE - float -> The update rate of the Q Table, a higher rate is a faster learning rate
+epsilon - float -> The ration of randomnes in the actions of the agent, decreases per EPISODE
+
+Q_LEARNING_PROCESS
+The main method of the Q Learning process 
+
+init()
+env -> Setting up of the enviroment
+parameters -> Instance of neural_network_parameters
+              , related variables are initilised from this
+
+STATES -> All the posible states of the agent 
+ACTIONS -> All possible actions the agent can take
+Q_TABLE -> List set to the size of the possible states and actions for each state
+goal_reached_on_episode -> List of Episodes which achived the goal 
+path_to_goal_used -> The paths taken to reach the goal
+path_data -> The shortest path ued to reach he goal i.e optimal path 
+
+
+return_path_data()
+Used by the AP, returns path_data i.e the shortest path found from the start to the goal 
+
+main_process()
+Main process of Q Learning
+-Loops fo the number of set EPISODES
+
+variables 
+
+state -> Current state of the agent, reset by the env at te start of each EPISODE
+path -> Path used by the agent during the current EPISODE
+reward_tracker -> the reward gaine during the curreent EPISODE
+q_table_flag -> Indicates if the Q Table has been accessed on this EPISODE
+
+-Loops through EPISODE_LENGTH
+Length of each episode defined in the env , referenced as steps per EPISODE
+
+- Checks for random acion based on the epsilon 
+  , gets data from the env based on the "action" given
+
+- Check for termination flag
+
+- Update Q Table 
+
+- Check if goal reached 
+
+update_Q_table()
+update the Q table using the given alg 
+
+process_path_data()
+process the paths that reached the goal 
+returns the best_path based on shortest length of the given paths
+
+
+
+"""
+
+
 import numpy as np
 import RNN_ENV as cenv
-
-
 from dataclasses import dataclass
-
-# Define the env
-# env = cenv.MazeEnv()
 
 
 @dataclass
