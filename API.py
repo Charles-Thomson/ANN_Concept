@@ -1,7 +1,7 @@
 """
 API used to pass data to and from the back end NN and the Flutter application
 
-Variables 
+Variables
 
 app -> Declare the app as a Flask app
 
@@ -19,7 +19,7 @@ Route used by Flutter UI to pass 'map' data.
 
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request
 
 import RNN
 

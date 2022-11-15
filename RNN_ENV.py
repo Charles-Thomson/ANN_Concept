@@ -82,9 +82,7 @@ Reset the env
 -> returns all vars to starting values
 -> returns agent to start location
 """
-
-import math
-import numpy as np
+import RNN_Helper_functions as HF
 from gym import Env
 from gym.spaces import Discrete
 
@@ -96,38 +94,16 @@ class MazeEnv(Env):
         print(MAP, type(MAP))
 
         # turn the map into a np array
-        self.npMAP = np.array(MAP)
-        print(type(self.npMAP), self.npMAP.shape, self.npMAP)
-
-        RootOfMapSize = int(math.sqrt(len(self.npMAP)))
-
-        self.npMAP = self.npMAP.reshape(RootOfMapSize, RootOfMapSize)
-        print(type(self.npMAP), self.npMAP.shape, self.npMAP)
+        self.npMAP = HF.to_npMAP(MAP)
 
         # Number of rows and cols
-        self.nrow, self.ncol = self.npMAP.shape
+        nrow, ncol = self.nrow, self.ncol = self.npMAP.shape
 
-        # Goal State
-        goal_state_coords = np.where(self.npMAP == 3)
-        self.goal_state_coords = (int(goal_state_coords[0]), int(goal_state_coords[1]))
+        self.goal_state = HF.find_goal_state(self.npMAP, ncol)
+        self.goal_state_coords = HF.to_coords(self.goal_state, ncol)
 
-        self.goal_state = (
-            self.goal_state_coords[0] * self.ncol
-        ) + self.goal_state_coords[
-            1
-        ]  # ncol * x  + y
-
-        # Agent starting state
-        agent_start_coords = np.where(self.npMAP == 0)
-
-        self.agent_start_coords = (
-            int(agent_start_coords[0]),
-            int(agent_start_coords[1]),
-        )  # Array type to int
-
-        self.agent_start_state = (
-            self.agent_start_coords[0] * self.ncol + self.agent_start_coords[1]
-        )
+        self.agent_start_state = HF.find_starting_state(self.npMAP, ncol)
+        self.agent_start_coords = HF.to_coords(self.agent_start_state, ncol)
 
         # Agent current state
         self.agent_current_state = self.agent_start_state
@@ -136,7 +112,7 @@ class MazeEnv(Env):
         # Obs space being the whole board
         self.observation_space = Discrete(self.nrow * self.ncol)
 
-        # Number of actions i.e  move; top left, up top right ect
+        # Number of actions
         self.action_space = Discrete(9)
 
         # Number of steps the agent can take
@@ -242,7 +218,7 @@ class MazeEnv(Env):
 
         try:
             at_obstical_location = (self.npMAP[self.agent_current_coords] == 2).any()
-        except:
+        except Exception:
             return True
 
         TERMINATION_CONDITIONS = [
