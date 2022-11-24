@@ -16,10 +16,6 @@ def find_starting_state(npMap: np.array, ncol: int) -> int:
     return start_state
 
 
-def find_start_state_hunter():
-    pass
-
-
 def to_state(coords: tuple, ncol: int) -> int:
     state = (coords[0] * ncol) + coords[1]
     return state
