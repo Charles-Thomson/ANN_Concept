@@ -1,7 +1,15 @@
 import MazeENV as env
 import MazeAgentBrain as brain
-import numpy as np
+import CustomLogging as CL
+import logging
 
+# Basic logging config
+logging.root.setLevel(logging.NOTSET)
+logging.basicConfig(
+    level=logging.NOTSET,
+)
+
+Maze_agent_logger = CL.GenerateLogger(__name__, "loggingFile.log")
 
 """
 For the NN
@@ -35,7 +43,6 @@ class MazeAgent:
         self.brain = brain.Brain(brain_init_data)
 
         self.run_agent()
-        # print(self.memory)
 
     def run_agent(self):
         for e in range(self.EPISODES):
@@ -43,14 +50,30 @@ class MazeAgent:
             self.path = []
             reward = 0.0
             self.brain.update_weights()
-            for step in range(self.env.EPISODE_LENGTH):
+            for _ in range(self.env.EPISODE_LENGTH):
 
                 action = self.brain.process(self.agent_state)
                 n_state, r, i, t = self.env.step(action)
 
-                # print(
-                #    f"state: {self.agent_state} Action {action} -> new_state: {n_state} , r = {r} info: {i}"
-                # )
+                # Approach one
+                # Loss is gradient desent ?
+                # I want the value of the new state
+                # Compare that against the expected new value state
+                # If they are equal, don't need to change unless the goal is visable
+                # If goal is visable need to change towards weighting of goal
+                # This option
+                # Take all the inputs and decide what the output "should" be
+                # Compare that to the actual output for each node in the H_layer ? output_layer
+                # adjust the weihts based on the difference in the ouput from the exected
+
+                # Approach Two
+                # Generational Learning
+                # Take each run and find reward until a higher reward is found
+                # When the reward is found compare against the longest time alive and merge the two
+
+                last_action = action
+                brain.LossFunction(last_action, n_state)
+
                 if t is True:
                     print("Termination")
                     self.path.append(n_state)
@@ -59,9 +82,13 @@ class MazeAgent:
                 self.agent_state = n_state
                 self.path.append(n_state)
 
-            # print(len(self.path), reward)
-            # self.save_EPISODE(self.path, reward, e)
-            # self.memory.append((len(self.path), reward))
+            Maze_agent_logger.debug(
+                f"Episode: {e} Length: {self.path} Reward: {reward}"
+            )
+
+        # print(len(self.path), reward)
+        # self.save_EPISODE(self.path, reward, e)
+        # self.memory.append((len(self.path), reward))
 
     # \\ --------------------------------------------Save episode to file \\
     def save_EPISODE(self, agent_path: list, reward: int, episode: int):

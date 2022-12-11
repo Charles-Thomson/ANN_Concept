@@ -73,21 +73,21 @@ def check_sightline(locations: list, nrow: int, ncol: int, env):
         match value:
             case 1:  # Open
                 if distance == 0:
-                    sightline_data[0] += 0.9
-                if distance == 1:
                     sightline_data[0] += 0.6
-                if distance > 1:
+                if distance == 1:
                     sightline_data[0] += 0.3
+                if distance > 1:
+                    sightline_data[0] += 0.1
 
             case 2:  # Obstical, also can't see through said obstical
                 if distance == 0:
-                    sightline_data[1] += 0.9
-                    break
-                if distance == 1:
                     sightline_data[1] += 0.6
                     break
-                if distance > 1:
+                if distance == 1:
                     sightline_data[1] += 0.3
+                    break
+                if distance > 1:
+                    sightline_data[1] += 0.1
                     break
 
             case 3:

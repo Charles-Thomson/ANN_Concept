@@ -3,12 +3,21 @@ from numpy.random import randn
 from math import sqrt
 from itertools import chain
 from SightData import check_sight_lines
+import CustomLogging as CL
+
+
+Brain_weights_logger = CL.GenerateLogger(__name__ + "weights", "loggingFileWeights.log")
+
+Output_layer_logging = CL.GenerateLogger(
+    __name__ + "ouputLayer", "loggingOutputLayer.log"
+)
 
 
 class Brain:
     def __init__(self, init_data: tuple):
         self.nrow, self.ncol, self.agent_state, self.env = init_data
         self.agent_coords = self.to_coords(self.agent_state, self.ncol)
+
         self.build_network()
 
     # // ------------------------------------------------// Build
@@ -48,10 +57,7 @@ class Brain:
         self.weights_hidden_to_output = [
             np.random.choice(scaled, len(i)) for i in self.weights_hidden_to_output
         ]
-
-        # print(self.weights_inputs_to_hidden[0])
-        self.update_weights()
-        # print(self.weights_hidden_to_output)
+        Brain_weights_logger.debug(f"Current weights {self.weights_hidden_to_output}")
 
     # // ------------------------------------------------// # Process
 
@@ -62,23 +68,35 @@ class Brain:
         self.calculate_hidden_layer()
         self.calculate_output_layer()
         new_action = self.determine_output()
+        Output_layer_logging.debug(
+            f"input Layer: {self.input_layer} - Output layer: {self.output_layer}"
+        )
         return new_action
+
+    def LossFuction(self, last_action, n_state):
+        n_state_coords = self.env.to_coords_call(n_state)
+        n_state_value = self.env.get_location_value_call(n_state_coords)
+
+        # We want the expected to move towards/onto an open tile or towards the goal if it is visable
+
+        pass
 
     """
     Weight layer
     0 -> Input to hidden
     1 -> hidden to output
-    Weighting 
+    Weighting
     0 = improve time alive
     1 = improve score
     """
 
     def update_weights(self):
+
         # currnently increasing weight of open and goal tile and decreasing for obstical tile
         for i in range(9):
             for j in range(0, 24, 3):
                 self.weights_inputs_to_hidden[i][j] = (
-                    self.weights_inputs_to_hidden[i][j] + 0.1
+                    self.weights_inputs_to_hidden[i][j] + 1
                 )
 
         for i in range(9):
@@ -93,7 +111,8 @@ class Brain:
                     self.weights_inputs_to_hidden[i][j] + 0.2
                 )
 
-        print(self.weights_inputs_to_hidden[1])
+        # print(self.weights_inputs_to_hidden)
+        Brain_weights_logger.debug(f"Current weights {self.weights_inputs_to_hidden}")
 
     # Outputlayer # Softmax
     def determine_output(self):
@@ -112,6 +131,8 @@ class Brain:
     def loss():
         pass
 
+    # Change this over to use np.dot apposed to the mat mul with index ?
+    # Doe the same but simpler ?
     def calculate_hidden_layer(self):
         inputs = self.input_layer
         weights = self.weights_inputs_to_hidden
