@@ -89,26 +89,28 @@ class MazeEnv(Env):
                 hcol += 1
                 hrow += 1
 
-        if self.collision_check(hrow, hcol) is True:
-            new_state = HF.to_state((hrow, hcol), self.ncol)
-            self.agent_state = new_state
-            return new_state
+        # need to set termination to true if the move takes the agent out of bounds
 
-        self.invalid_move = True
-        return self.agent_state
+        if self.second_termination_check(hrow, hcol):
+            self.termination = True
+            return self.agent_state
 
-    def collision_check(self, x: int, y: int) -> bool:
+        # self.invalid_move = True
+        new_state = HF.to_state((hrow, hcol), self.ncol)
+        self.agent_state = new_state
+        return new_state
 
-        COLLISION_CHECKS = [
-            (0 <= x <= self.ncol - 1),
-            (0 <= y <= self.nrow - 1),
-            (HF.to_state((x, y), self.ncol) != 2),
+    def second_termination_check(self, hrow, hcol):
+
+        CONDITIONS = [
+            (0 > hrow),
+            (hrow >= self.ncol),
+            (0 > hcol),
+            (hcol >= self.nrow),
         ]
 
-        # If the move is in bounds and not moving to an obstical
-        if all(COLLISION_CHECKS):
+        if any(CONDITIONS):
             return True
-
         return False
 
     def calculate_reward(self):
@@ -130,11 +132,12 @@ class MazeEnv(Env):
         return reward
 
     def step(self, action: int) -> tuple[int, float, list, bool]:
-        self.action_mapping(action, self.agent_state)
         info = []
+        self.action_mapping(action, self.agent_state)
+        self.termination_check()
         new_state = self.agent_state
         reward = self.calculate_reward()
-        self.termination_check()
+
         terminated = self.termination
         self.EPISODE_LENGTH -= 1
 
@@ -145,13 +148,22 @@ class MazeEnv(Env):
         return new_state, reward, info, terminated
 
     def termination_check(self) -> bool:
-        agent_coords = HF.to_coords(self.agent_state, self.ncol)
+        try:
+            agent_coords = HF.to_coords(self.agent_state, self.ncol)
+        except ValueError:
+            return True
+
+        x, y = agent_coords
         value_at_state = HF.get_loaction_value(self.map, agent_coords)
 
         TERMINATION_CONDITIONS = [
             (value_at_state == 3),
             (value_at_state == 2),
             (self.EPISODE_LENGTH <= 0),
+            (0 > x),
+            (x > self.ncol),
+            (0 > y),
+            (y > self.nrow),
         ]
 
         if any(TERMINATION_CONDITIONS):

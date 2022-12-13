@@ -9,7 +9,7 @@ logging.basicConfig(
     level=logging.NOTSET,
 )
 
-Maze_agent_logger = CL.GenerateLogger(__name__, "loggingFile.log")
+Maze_agent_logger = CL.GenerateLogger(__name__, "PathloggingFile.log")
 
 """
 For the NN
@@ -53,31 +53,19 @@ class MazeAgent:
             for _ in range(self.env.EPISODE_LENGTH):
 
                 action = self.brain.process(self.agent_state)
+
                 n_state, r, i, t = self.env.step(action)
-
-                # Approach one
-                # Loss is gradient desent ?
-                # I want the value of the new state
-                # Compare that against the expected new value state
-                # If they are equal, don't need to change unless the goal is visable
-                # If goal is visable need to change towards weighting of goal
-                # This option
-                # Take all the inputs and decide what the output "should" be
-                # Compare that to the actual output for each node in the H_layer ? output_layer
-                # adjust the weihts based on the difference in the ouput from the exected
-
-                # Approach Two
-                # Generational Learning
-                # Take each run and find reward until a higher reward is found
-                # When the reward is found compare against the longest time alive and merge the two
+                # Need a guard or something for an invalid action, or kill agent ?
+                print(self.agent_state, action, t)
 
                 last_action = action
-                brain.LossFunction(last_action, n_state)
+                # brain.LossFunction(last_action, n_state)
 
                 if t is True:
                     print("Termination")
                     self.path.append(n_state)
                     break
+
                 reward += r
                 self.agent_state = n_state
                 self.path.append(n_state)
