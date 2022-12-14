@@ -58,11 +58,13 @@ class Brain:
         scaled = numbers * std
 
         self.weights_inputs_to_hidden = [
-            np.random.choice(scaled, len(i)) for i in self.weights_inputs_to_hidden
+            np.random.choice(scaled, len(i)).round(2)
+            for i in self.weights_inputs_to_hidden
         ]
 
         self.weights_hidden_to_output = [
-            np.random.choice(scaled, len(i)) for i in self.weights_hidden_to_output
+            np.random.choice(scaled, len(i)).round(2)
+            for i in self.weights_hidden_to_output
         ]
         Brain_weights_logger.debug(f"Current weights {self.weights_hidden_to_output}")
 

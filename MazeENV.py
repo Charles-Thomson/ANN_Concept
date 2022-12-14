@@ -13,13 +13,18 @@ import Maze_ENV_Helper_Functions as HF
 import numpy as np
 from gym import Env
 from gym.spaces import Discrete
+import CustomLogging as CL
+
+actions_by_step_logging = CL.GenerateLogger(
+    name=__name__, Log_File="LoggingStepByAction.log"
+)
 
 ENV_MAP = [
-    [3, 1, 2, 1, 2],
+    [2, 1, 1, 1, 2],
     [1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
+    [2, 1, 1, 1, 3],
 ]
 
 
@@ -28,37 +33,23 @@ class MazeEnv(Env):
         self.map = np.array(ENV_MAP)
 
         nrow, ncol = self.nrow, self.ncol = self.map.shape
-
         self.agent_start_state = agent_start_state
 
-        self.agent_state = agent_start_state
-
-        self.set_agent_start(agent_start_state)
-
-        self.EPISODE_LENGTH = 3
-        self.termination = False
+        self.EPISODE_LENGTH = 10
 
         self.observation_space = Discrete(nrow * ncol)
         self.action_space = Discrete(9)
 
     def reset(self):
-        self.agent_state = self.agent_start_state
-        self.EPISODE_LENGTH = 50
-        self.termination = False
-        self.set_agent_start(self.agent_start_state)
+        agent_state = self.agent_start_state
+        self.EPISODE_LENGTH = 5
+        return agent_state
 
-        return self.agent_start_state
+    def action_mapping(self, action: int, agent_state: int) -> tuple[int, bool]:
+        hrow, hcol = HF.to_coords(agent_state, self.ncol)
 
-    def set_agent_start(self, agent_start_state: int):
-        x, y = HF.to_coords(agent_start_state, self.ncol)
-        self.map[x][y] = 0
-
-    def action_mapping(self, action: int, agent_state: int) -> int:
-        hrow, hcol = row, col = HF.to_coords(self.agent_state, self.ncol)
-        self.invalid_move = False
-
-        match action:  # Up + Left
-            case 0:
+        match action:
+            case 0:  # Up + Left
                 hrow -= 1
                 hcol -= 1
 
@@ -89,33 +80,33 @@ class MazeEnv(Env):
                 hcol += 1
                 hrow += 1
 
-        # need to set termination to true if the move takes the agent out of bounds
+        if self.check_bondries(hrow, hcol) is False:
+            # No move due to out of bounds -> Terminate
+            print("Terminating in bounds")
+            return (agent_state, True)
 
-        if self.second_termination_check(hrow, hcol):
-            self.termination = True
-            return self.agent_state
+        return (HF.to_state((hrow, hcol), self.ncol), False)
 
-        # self.invalid_move = True
-        new_state = HF.to_state((hrow, hcol), self.ncol)
-        self.agent_state = new_state
-        return new_state
+    def check_bondries(self, hrow, hcol) -> bool:
+        """
+        Returns True if the move is in bounds else False
+        """
 
-    def second_termination_check(self, hrow, hcol):
-
-        CONDITIONS = [
-            (0 > hrow),
-            (hrow >= self.ncol),
-            (0 > hcol),
-            (hcol >= self.nrow),
+        BOUDRY_CONDITIONS = [
+            (0 <= hrow),
+            (hrow < self.ncol),
+            (0 <= hcol),
+            (hcol < self.nrow),
         ]
 
-        if any(CONDITIONS):
+        if all(BOUDRY_CONDITIONS):
             return True
+
         return False
 
-    def calculate_reward(self):
+    def calculate_reward(self, agent_state: int):
         value_at_state = HF.get_loaction_value(
-            self.map, HF.to_coords(self.agent_state, self.ncol)
+            self.map, HF.to_coords(agent_state, self.ncol)
         )
         reward = 0
 
@@ -131,45 +122,43 @@ class MazeEnv(Env):
 
         return reward
 
-    def step(self, action: int) -> tuple[int, float, list, bool]:
-        info = []
-        self.action_mapping(action, self.agent_state)
-        self.termination_check()
-        new_state = self.agent_state
-        reward = self.calculate_reward()
-
-        terminated = self.termination
+    def step(self, agent_state: int, action: int) -> tuple[int, float, list, bool]:
+        i: list = []
         self.EPISODE_LENGTH -= 1
+        ns, t_a = self.action_mapping(action, agent_state)
+        t_b: bool = self.termination_check(ns)
+        r: int = self.calculate_reward(agent_state)
 
-        if self.invalid_move is True:
-            info = ["Move Invalid"]
-            reward = 0
+        if t_a or t_b:
+            t = True
+        else:
+            t = False
 
-        return new_state, reward, info, terminated
+        actions_by_step_logging.debug(
+            f"Agent State: {agent_state} - Action: {action} - New State: {ns} - Termination: {t} "
+        )
 
-    def termination_check(self) -> bool:
-        try:
-            agent_coords = HF.to_coords(self.agent_state, self.ncol)
-        except ValueError:
-            return True
+        return ns, r, i, t
 
-        x, y = agent_coords
+    def termination_check(self, ns: int) -> bool:
+
+        agent_coords = HF.to_coords(ns, self.ncol)
         value_at_state = HF.get_loaction_value(self.map, agent_coords)
 
         TERMINATION_CONDITIONS = [
             (value_at_state == 3),
             (value_at_state == 2),
-            (self.EPISODE_LENGTH <= 0),
-            (0 > x),
-            (x > self.ncol),
-            (0 > y),
-            (y > self.nrow),
+            (self.EPISODE_LENGTH < 0),
         ]
 
         if any(TERMINATION_CONDITIONS):
-            self.termination = True
+            print("Termination in main check")
+            return True
+
+        return False
 
     # // ------------------------------------------------------------- //
+
     # Call to HF get_location_value
     def get_location_value_call(self, coords: tuple) -> int:
         map = self.map

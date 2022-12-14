@@ -25,34 +25,46 @@ def get_loaction_value(map: np.array, coords: tuple) -> int:
     value = map[x][y]
     return value
 
-    # Helper function - Simplify action to direcion equiverlent
-    def simple_move(action: int) -> str:
-        simple_move = ""
-        match action:
-            case 0:
-                simple_move = "Up + Left"
 
-            case 1:
-                simple_move = "Up"
+# Helper function - Simplify action to direcion equiverlent
+def simple_move(action: int) -> str:
+    simple_move = ""
+    match action:
+        case 0:
+            simple_move = "Up + Left"
 
-            case 2:
-                simple_move = "Up + Right"
+        case 1:
+            simple_move = "Up"
 
-            case 3:
-                simple_move = "Left"
+        case 2:
+            simple_move = "Up + Right"
 
-            case 4:
-                simple_move = "No move"
+        case 3:
+            simple_move = "Left"
 
-            case 5:
-                simple_move = "Right"
+        case 4:
+            simple_move = "No move"
 
-            case 6:
-                simple_move = "Down + Left"
+        case 5:
+            simple_move = "Right"
 
-            case 7:
-                simple_move = "Down"
+        case 6:
+            simple_move = "Down + Left"
 
-            case 8:
-                simple_move = "Down + Right"
-        return simple_move
+        case 7:
+            simple_move = "Down"
+
+        case 8:
+            simple_move = "Down + Right"
+    return simple_move
+
+    # \\ --------------------------------------------Save episode to file \\
+    def save_EPISODE(self, agent_path: list, reward: int, episode: int):
+        path_length = str(len(agent_path))
+        reward = str(reward)
+        episode = str(episode)
+        f = open("EpisodeData.txt", "a")
+        f.write("\n" + episode)
+        f.write(", " + path_length)
+        f.write(", " + reward)
+        f.close()

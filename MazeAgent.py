@@ -30,14 +30,12 @@ For the NN
 
 class MazeAgent:
     def __init__(self, agent_state):
-        self.EPISODES = 5
+        self.EPISODES = 1
         self.agent_state = agent_state
-        self.env = env.MazeEnv(12)  # passing a hard coded start of 12
+        self.env = env.MazeEnv(agent_state)
         self.nrow = self.env.nrow
         self.ncol = self.env.ncol
         self.path = []
-
-        self.memory = []
 
         brain_init_data = (self.ncol, self.nrow, self.agent_state, self.env)
         self.brain = brain.Brain(brain_init_data)
@@ -49,45 +47,32 @@ class MazeAgent:
             self.agent_state = self.env.reset()
             self.path = []
             reward = 0.0
-            self.brain.update_weights()
-            for _ in range(self.env.EPISODE_LENGTH):
 
+            for _ in range(self.env.EPISODE_LENGTH):
                 action = self.brain.process(self.agent_state)
 
-                n_state, r, i, t = self.env.step(action)
-                # Need a guard or something for an invalid action, or kill agent ?
-                print(self.agent_state, action, t)
+                ns: int
+                r: float
+                i: list
+                t: bool
+
+                ns, r, i, t = self.env.step(self.agent_state, action)
 
                 last_action = action
                 # brain.LossFunction(last_action, n_state)
 
                 if t is True:
-                    print("Termination")
-                    self.path.append(n_state)
+                    print("Termination")  # Used for debug
+                    self.path.append(ns)
                     break
 
                 reward += r
-                self.agent_state = n_state
-                self.path.append(n_state)
+                self.agent_state = ns
+                self.path.append(ns)
 
             Maze_agent_logger.debug(
                 f"Episode: {e} Length: {self.path} Reward: {reward}"
             )
-
-        # print(len(self.path), reward)
-        # self.save_EPISODE(self.path, reward, e)
-        # self.memory.append((len(self.path), reward))
-
-    # \\ --------------------------------------------Save episode to file \\
-    def save_EPISODE(self, agent_path: list, reward: int, episode: int):
-        path_length = str(len(agent_path))
-        reward = str(reward)
-        episode = str(episode)
-        f = open("EpisodeData.txt", "a")
-        f.write("\n" + episode)
-        f.write(", " + path_length)
-        f.write(", " + reward)
-        f.close()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,10 @@ from itertools import chain
 
 
 def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
+    """
+    Covering the 8 directions out from the agent
+    """
+
     state = agent_state
     row, col = to_coords(state, ncol)
 
@@ -10,40 +14,38 @@ def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
     for i, data in enumerate(visable_env_data):
         match i:
             case 0:  # Up + Left
-                loc = [(row - i, col - i) for i in range(col + 1)]
+                loc = [(row - i, col - i) for i in range(1, col + 1)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
             case 1:  # Up
-                loc = [(row - i, col) for i in range(row + 1)]
+                loc = [(row - i, col) for i in range(1, row + 1)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
             case 2:  # Up + Right
-                loc = [(row - i, col + i) for i in range(nrow - row)]
+                loc = [(row - i, col + i) for i in range(1, nrow - row)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
             case 3:  # Left
-                loc = [(row, col - i) for i in range(col + 1)]
+                loc = [(row, col - i) for i in range(1, col + 1)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-            case 4:  # No move
-                loc = [(row, col)]
+            case 4:  # Right
+                loc = [(row, col + i) for i in range(1, nrow - col)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-            case 5:  # Right
-                loc = [(row, col + i) for i in range(nrow - col)]
+            case 5:  # Down + Left
+                loc = [(row + i, col - i) for i in range(1, col + 1)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-            case 6:  # Down + Left
-                loc = [(row + i, col - i) for i in range(col + 1)]
+            case 6:  # Down
+                loc = [(row + i, col) for i in range(1, nrow - row)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-            case 7:  # Down
-                loc = [(row + i, col) for i in range(nrow - row)]
+            case 7:  # Down + Right
+                loc = [(row + i, col + i) for i in range(1, nrow - row)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-            case 8:  # Down + Right
-                loc = [(row + i, col + i) for i in range(nrow - row)]
-                visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
+        print(visable_env_data[i], loc)  # For debug
 
     visable_env_data = list(chain(*visable_env_data))
 
@@ -53,8 +55,8 @@ def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
 # Pass in a list of values to check
 
 """
-1 -> open 
-2 -> obstical - kill agent 
+1 -> open
+2 -> obstical
 3 -> goal
 """
 
@@ -73,30 +75,30 @@ def check_sightline(locations: list, nrow: int, ncol: int, env):
         match value:
             case 1:  # Open
                 if distance == 0:
+                    sightline_data[0] += 1
+                if distance == 1:
                     sightline_data[0] += 0.6
-                if distance == 1:
-                    sightline_data[0] += 0.3
                 if distance > 1:
-                    sightline_data[0] += 0.1
+                    sightline_data[0] += 0.2
 
-            case 2:  # Obstical, also can't see through said obstical
+            case 2:  # Obstical, also can't see through said obstical - rethink this
                 if distance == 0:
-                    sightline_data[1] += 0.6
+                    sightline_data[1] += 1
                     break
                 if distance == 1:
-                    sightline_data[1] += 0.3
+                    sightline_data[1] += 0.7
                     break
                 if distance > 1:
-                    sightline_data[1] += 0.1
+                    sightline_data[1] += 0.5
                     break
 
             case 3:
                 if distance == 0:
-                    sightline_data[2] += 1
+                    sightline_data[2] += 5
                 if distance == 1:
-                    sightline_data[2] += 1
+                    sightline_data[2] += 5
                 if distance > 1:
-                    sightline_data[2] += 1
+                    sightline_data[2] += 5
 
     return sightline_data
 
