@@ -32,17 +32,19 @@ class MazeEnv(Env):
     def __init__(self, agent_start_state: int, ENV_MAP: list = ENV_MAP):
         self.map = np.array(ENV_MAP)
 
+        self.EPISODE_LENGTH_SET = 10
+
         nrow, ncol = self.nrow, self.ncol = self.map.shape
         self.agent_start_state = agent_start_state
 
-        self.EPISODE_LENGTH = 10
+        self.EPISODE_LENGTH = self.EPISODE_LENGTH_SET
 
         self.observation_space = Discrete(nrow * ncol)
         self.action_space = Discrete(9)
 
     def reset(self):
         agent_state = self.agent_start_state
-        self.EPISODE_LENGTH = 5
+        self.EPISODE_LENGTH = self.EPISODE_LENGTH_SET
         return agent_state
 
     def action_mapping(self, action: int, agent_state: int) -> tuple[int, bool]:
@@ -82,7 +84,7 @@ class MazeEnv(Env):
 
         if self.check_bondries(hrow, hcol) is False:
             # No move due to out of bounds -> Terminate
-            print("Terminating in bounds")
+            # print("Terminating in bounds")
             return (agent_state, True)
 
         return (HF.to_state((hrow, hcol), self.ncol), False)
@@ -152,7 +154,7 @@ class MazeEnv(Env):
         ]
 
         if any(TERMINATION_CONDITIONS):
-            print("Termination in main check")
+            # print("Termination in main check")
             return True
 
         return False

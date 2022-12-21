@@ -45,7 +45,7 @@ def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
                 loc = [(row + i, col + i) for i in range(1, nrow - row)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-        print(visable_env_data[i], loc)  # For debug
+        # print(visable_env_data[i], loc)  # For debug
 
     visable_env_data = list(chain(*visable_env_data))
 

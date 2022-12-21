@@ -3,6 +3,7 @@ import MazeAgentBrain as brain
 import CustomLogging as CL
 import logging
 
+
 # Basic logging config
 logging.root.setLevel(logging.NOTSET)
 logging.basicConfig(
@@ -11,28 +12,12 @@ logging.basicConfig(
 
 Maze_agent_logger = CL.GenerateLogger(__name__, "PathloggingFile.log")
 
-"""
-For the NN
-28 input = 8 directions * 3 (empty, wall, hunter )
-
-# Need to define a policay for eac agent, the loss will then
-        # Adjust the weights based on the difference in out come from the achivment
-        # of the policay - so not needing to use a test set of data ?
-
-        # Cross entropy as loss function baed on the policy
-
-        # Rulu used on hidden layer
-
-        # Testing Softmax activation function - used on ouput layer
-
-"""
-
 
 class MazeAgent:
     def __init__(self, agent_state):
-        self.EPISODES = 1
-        self.agent_state = agent_state
+        self.EPISODES = 16
         self.env = env.MazeEnv(agent_state)
+        self.agent_state = agent_state
         self.nrow = self.env.nrow
         self.ncol = self.env.ncol
         self.path = []
@@ -48,7 +33,7 @@ class MazeAgent:
             self.path = []
             reward = 0.0
 
-            for _ in range(self.env.EPISODE_LENGTH):
+            for step in range(self.env.EPISODE_LENGTH):
                 action = self.brain.process(self.agent_state)
 
                 ns: int
@@ -58,11 +43,8 @@ class MazeAgent:
 
                 ns, r, i, t = self.env.step(self.agent_state, action)
 
-                last_action = action
-                # brain.LossFunction(last_action, n_state)
-
                 if t is True:
-                    print("Termination")  # Used for debug
+                    # print("Termination")  # Used for debug
                     self.path.append(ns)
                     break
 
@@ -73,6 +55,24 @@ class MazeAgent:
             Maze_agent_logger.debug(
                 f"Episode: {e} Length: {self.path} Reward: {reward}"
             )
+
+            self.brain.commit_to_memory(e, reward, step)  # if no remnation
+
+            if e == 5:
+                self.brain.new_generation()
+                print(len(self.brain.Memory))
+                print(self.brain.Memory)
+                self.brain.clear_memory()
+
+            if e == 10:
+                self.brain.new_generation()
+                print(len(self.brain.Memory))
+                self.brain.clear_memory()
+
+            if e == 15:
+                self.brain.new_generation()
+                print(len(self.brain.Memory))
+                self.brain.clear_memory()
 
 
 if __name__ == "__main__":
