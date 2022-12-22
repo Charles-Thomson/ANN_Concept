@@ -40,41 +40,54 @@ class Brain:
     # // ------------------------------------------------// Build
 
     def build_network(self):
-        self.input_layer = np.array([float(i) for i in range(24)])
-        self.hidden_layer = np.array([float(0) for h in range(9)])
-        self.output_layer = np.array([float(0) for o in range(9)])
+        # // ---- // Build layers
+        self.input_layer = input_layer = np.array([float(i) for i in range(24)])
+        self.hidden_layer = hidden_layer = np.array([float(0) for h in range(9)])
+        self.output_layer = output_layer = np.array([float(0) for o in range(9)])
 
-        self.weights_inputs_to_hidden = np.array(
-            [
-                [float(i) for i in range(len(self.hidden_layer))]
-                for x in range(len(self.input_layer))
-            ]
+        # // ---- // Build weights
+        self.weights_inputs_to_hidden = self.generate_weighted_connections(
+            input_layer, hidden_layer
+        )
+        self.weights_hidden_to_output = self.generate_weighted_connections(
+            hidden_layer, output_layer
         )
 
-        self.weights_hidden_to_output = np.array(
+        # Unacking requiers the brackets apparently
+        # (
+        #    self.weights_inputs_to_hidden,
+        #    self.weights_hidden_to_output,
+        # ) = self.generate_random_weights(
+        #    weights_inputs_to_hidden, weights_hidden_to_output
+        # )
+
+        self.new_random_weights()
+
+        To_H_W_Logging.debug(f"Current weights {self.weights_inputs_to_hidden}")
+
+    def generate_weighted_connections(
+        self, sending_layer: np.array, reciving_layer: np.array
+    ) -> np.array:
+
+        weights = np.array(
             [
-                [float(i) for i in range(len(self.output_layer))]
-                for x in range(len(self.hidden_layer))
+                [float(i) for i in range(len(reciving_layer))]
+                for x in range(len(sending_layer))
             ]
         )
+        return weights
 
-        self.set_start_weights()
-
-    def set_start_weights(self):
-        std = sqrt(2.0 / len(self.input_layer))
+    # debugging this function
+    def generate_random_weights(self, *weight_sets: np.array) -> list[np.array]:
+        std = sqrt(2.0 / len(self.input_layer))  # Not happy about the self call
         numbers = randn(500)
         scaled = numbers * std
+        completed = list(weight_sets)
 
-        self.weights_inputs_to_hidden = [
-            np.random.choice(scaled, len(i)).round(2)
-            for i in self.weights_inputs_to_hidden
-        ]
+        for i, set in enumerate(completed):
+            completed[i] = [np.random.choice(scaled, len(i)).round(2) for i in set]
 
-        self.weights_hidden_to_output = [
-            np.random.choice(scaled, len(i)).round(2)
-            for i in self.weights_hidden_to_output
-        ]
-        To_H_W_Logging.debug(f"Current weights {self.weights_inputs_to_hidden}")
+        return completed
 
     # // ------------------------------------------------// # Process
 
@@ -100,6 +113,17 @@ class Brain:
             f" State: {agent_state} Output layer: {self.output_layer} Action: {new_action}"
         )
         return new_action
+
+    def new_random_weights(self):
+        """
+        Generate new random weights and assign to the weights matrix's
+        """
+        (
+            self.weights_inputs_to_hidden,
+            self.weights_hidden_to_output,
+        ) = self.generate_random_weights(
+            self.weights_inputs_to_hidden, self.weights_hidden_to_output
+        )
 
     def hidden_layer_activation(self):
         layer = self.hidden_layer
@@ -188,7 +212,6 @@ class Brain:
             if m.t_alive > highest_talive:
                 highest_talive = m.t_alive
                 highest_t_alive_memory = m
-                # print(highest_talive)
 
         return highest_t_alive_memory
 

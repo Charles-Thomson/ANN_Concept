@@ -56,22 +56,19 @@ class MazeAgent:
                 f"Episode: {e} Length: {self.path} Reward: {reward}"
             )
 
-            self.brain.commit_to_memory(e, reward, step)  # if no remnation
+            self.brain.commit_to_memory(e, reward, step)  # if no termination
+            self.brain.new_random_weights()
 
             if e == 5:
                 self.brain.new_generation()
-                print(len(self.brain.Memory))
-                print(self.brain.Memory)
                 self.brain.clear_memory()
 
             if e == 10:
                 self.brain.new_generation()
-                print(len(self.brain.Memory))
                 self.brain.clear_memory()
 
             if e == 15:
                 self.brain.new_generation()
-                print(len(self.brain.Memory))
                 self.brain.clear_memory()
 
 
