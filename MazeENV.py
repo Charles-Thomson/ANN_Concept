@@ -129,7 +129,12 @@ class MazeEnv(Env):
         self.EPISODE_LENGTH -= 1
         ns, t_a = self.action_mapping(action, agent_state)
         t_b: bool = self.termination_check(ns)
+
         r: int = self.calculate_reward(agent_state)
+
+        # No reward for the "stay" action
+        if ns == agent_state:
+            r = 0
 
         if t_a or t_b:
             t = True
@@ -148,7 +153,7 @@ class MazeEnv(Env):
         value_at_state = HF.get_loaction_value(self.map, agent_coords)
 
         TERMINATION_CONDITIONS = [
-            (value_at_state == 3),
+            # (value_at_state == 3),
             (value_at_state == 2),
             (self.EPISODE_LENGTH < 0),
         ]

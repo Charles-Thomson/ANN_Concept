@@ -1,0 +1,120 @@
+DEBUG :: run_agent :: Episode: 0 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+INFO :: run_agent :: No new Generation
+DEBUG :: run_agent :: Episode: 1 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 2 Length: [7, 3, 2, 3, 2, 3, 2, 3, 2, 3] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 3 Length: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 4 Length: [17, 23, 23] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 5 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 6 Length: [17, 22, 22] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 7 Length: [17, 12, 17, 12, 17, 12, 17, 12, 17, 12] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 8 Length: [7, 2, 2] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 9 Length: [17, 22, 18, 23, 19, 14, 19, 14, 19, 14] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 10 Length: [16, 20] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 11 Length: [7, 2, 3, 3] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 12 Length: [18, 24, 24] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 13 Length: [17, 22, 22] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 14 Length: [13, 18, 19, 24, 24] Reward: 1.7 Fitness: 0.425 
+DEBUG :: run_agent :: Episode: 15 Length: [18, 23, 17, 21, 15, 15] Reward: 1.85 Fitness: 0.37 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 16 Length: [6, 10, 10] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 17 Length: [7, 2, 7, 2, 7, 2, 7, 2, 7, 2] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 18 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 19 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 20 Length: [8, 4] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 21 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 22 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 23 Length: [16, 22, 22] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 24 Length: [7, 3, 3, 3, 3, 3, 3, 3, 3, 3] Reward: 1.37 Fitness: 0.152 
+DEBUG :: run_agent :: Episode: 25 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+INFO :: run_agent :: No new Generation
+DEBUG :: run_agent :: Episode: 26 Length: [16, 10, 10, 10, 10, 10, 10, 10, 10, 10] Reward: 1.37 Fitness: 0.152 
+DEBUG :: run_agent :: Episode: 27 Length: [7, 2, 2] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 28 Length: [8, 14, 13, 19, 18, 14, 13, 19, 18, 14] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 29 Length: [13, 14, 14] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 30 Length: [13, 9, 4] Reward: 1.37 Fitness: 0.685 
+INFO :: run_agent :: No new Generation
+DEBUG :: run_agent :: Episode: 31 Length: [7, 2, 2] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 32 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 33 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 34 Length: [7, 11, 16, 21, 21] Reward: 1.7 Fitness: 0.425 
+DEBUG :: run_agent :: Episode: 35 Length: [13, 9, 13, 9, 13, 9, 13, 9, 13, 9] Reward: 2.45 Fitness: 0.272 
+INFO :: run_agent :: No new Generation
+DEBUG :: run_agent :: Episode: 36 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 37 Length: [13, 7, 1, 1] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 38 Length: [11, 15, 15] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 39 Length: [18, 24, 19, 14, 19, 14, 19, 14, 19, 14] Reward: 102.28 Fitness: 11.364 REWARD FOUND
+DEBUG :: run_agent :: Episode: 40 Length: [16, 17, 16, 17, 16, 17, 16, 17, 16, 17] Reward: 2.45 Fitness: 0.272 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 41 Length: [8, 4] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 42 Length: [18, 22, 22] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 43 Length: [8, 12, 8, 12, 8, 12, 8, 12, 8, 12] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 44 Length: [17, 18, 23, 23] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 45 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 46 Length: [17, 23, 18, 23, 18, 23, 18, 23, 18, 23] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 47 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 48 Length: [11, 10, 5, 1, 1] Reward: 1.7 Fitness: 0.425 
+DEBUG :: run_agent :: Episode: 49 Length: [16, 15, 15] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 50 Length: [17, 11, 5, 11, 5, 11, 5, 11, 5, 11] Reward: 2.45 Fitness: 0.272 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 51 Length: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 52 Length: [11, 11, 11, 11, 11, 11, 11, 11, 11, 11] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 53 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 54 Length: [6, 7, 7, 7, 7, 7, 7, 7, 7, 7] Reward: 1.37 Fitness: 0.152 
+DEBUG :: run_agent :: Episode: 55 Length: [7, 8, 12, 7, 8, 12, 7, 8, 12, 7] Reward: 2.45 Fitness: 0.272 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 56 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 57 Length: [16, 20] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 58 Length: [17, 17, 17, 17, 17, 17, 17, 17, 17, 17] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 59 Length: [16, 12, 16, 12, 16, 12, 16, 12, 16, 12] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 60 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 61 Length: [11, 10, 5, 0] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 62 Length: [11, 6, 12, 11, 6, 12, 11, 6, 12, 11] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 63 Length: [13, 13, 13, 13, 13, 13, 13, 13, 13, 13] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 64 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 65 Length: [16, 21, 21] Reward: 1.37 Fitness: 0.685 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 66 Length: [18, 24, 24] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 67 Length: [16, 20] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 68 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 69 Length: [18, 24, 24] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 70 Length: [8, 13, 18, 22, 22] Reward: 1.7 Fitness: 0.425 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 71 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 72 Length: [17, 22, 22] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 73 Length: [8, 4] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 74 Length: [16, 17, 23, 23] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 75 Length: [18, 24, 19, 13, 19, 13, 19, 13, 19, 13] Reward: 102.28 Fitness: 11.364 REWARD FOUND
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 76 Length: [18, 24, 19, 13, 19, 13, 19, 13, 19, 13] Reward: 102.28 Fitness: 11.364 REWARD FOUND
+DEBUG :: run_agent :: Episode: 77 Length: [8, 7, 6, 2, 1, 0] Reward: 1.85 Fitness: 0.37 
+DEBUG :: run_agent :: Episode: 78 Length: [8, 3, 3] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 79 Length: [16, 10, 10] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 80 Length: [17, 21, 17, 21, 17, 21, 17, 21, 17, 21] Reward: 2.45 Fitness: 0.272 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 81 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 82 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 83 Length: [18, 24, 24] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 84 Length: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8] Reward: 1.19 Fitness: 0.132 
+DEBUG :: run_agent :: Episode: 85 Length: [8, 4] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 86 Length: [8, 9, 9] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 87 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 88 Length: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12] Reward: 1.0 Fitness: 0.111 
+DEBUG :: run_agent :: Episode: 89 Length: [7, 2, 2] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 90 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 91 Length: [6, 0] Reward: 1.19 Fitness: 1.19 
+DEBUG :: run_agent :: Episode: 92 Length: [7, 8, 9, 9] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 93 Length: [7, 3, 2, 1, 5, 5, 5, 5, 5, 5] Reward: 1.85 Fitness: 0.206 
+DEBUG :: run_agent :: Episode: 94 Length: [13, 14, 14] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 95 Length: [16, 17, 18, 19, 19] Reward: 1.7 Fitness: 0.425 
+INFO :: run_agent :: Next Episode is new Generation
+DEBUG :: run_agent :: Episode: 96 Length: [7, 11, 6, 1, 2, 1, 2, 1, 2, 1] Reward: 2.45 Fitness: 0.272 
+DEBUG :: run_agent :: Episode: 97 Length: [7, 2, 2] Reward: 1.37 Fitness: 0.685 
+DEBUG :: run_agent :: Episode: 98 Length: [11, 16, 21, 21] Reward: 1.54 Fitness: 0.513 
+DEBUG :: run_agent :: Episode: 99 Length: [11, 10, 10] Reward: 1.37 Fitness: 0.685 

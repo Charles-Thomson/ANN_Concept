@@ -28,6 +28,24 @@ Genertaion_logger = CL.GenerateLogger(
     __name__ + "Generation", "LoggingNewGenerations.log"
 )
 
+"""
+Take a base set of weights
+- Eliteism approach 
+
+1. Take the best of the generation and save them 
+2. randomly select pairs to be crossed over
+
+- ngen = parent_a(m) + parent_b(1-m)
+- m = random number between 0 - 1 
+
+- Add random mutation 
+- Geerate a number between 0-1, if it is above a set threshold mutate
+- Mutate will adjust a random weight in the ngen by +/- 10% 
+
+ -- past a certain point all the randomness comes from the mutation of the new generation 
+    , not from generating completley new weights 
+"""
+
 
 class Brain:
     def __init__(self, init_data: tuple):
@@ -53,13 +71,11 @@ class Brain:
             hidden_layer, output_layer
         )
 
-        # Unacking requiers the brackets apparently
-        # (
-        #    self.weights_inputs_to_hidden,
-        #    self.weights_hidden_to_output,
-        # ) = self.generate_random_weights(
-        #    weights_inputs_to_hidden, weights_hidden_to_output
-        # )
+        # base weights - changes for each new generation
+        self.base_weights_to_hidden = self.weights_inputs_to_hidden
+        self.base_weights_to_output = self.weights_hidden_to_output
+
+        self.LR = 0.05
 
         self.new_random_weights()
 
@@ -71,13 +87,12 @@ class Brain:
 
         weights = np.array(
             [
-                [float(i) for i in range(len(reciving_layer))]
+                [float(1) for i in range(len(reciving_layer))]
                 for x in range(len(sending_layer))
             ]
         )
         return weights
 
-    # debugging this function
     def generate_random_weights(self, *weight_sets: np.array) -> list[np.array]:
         std = sqrt(2.0 / len(self.input_layer))  # Not happy about the self call
         numbers = randn(500)
@@ -144,76 +159,72 @@ class Brain:
 
     # // ------------------------------------------------// Generational Learning
 
-    def new_generation(self):
-        """
-        Create a new generation
-        -> Mutation of hidden & output weights of the most sucessful episodes
-        """
+    # Show if new generation is possible
+    def generation_possible(self) -> bool:
+        return True if len(self.Memory) >= 2 else False
 
-        # pulling the same every time
+    # This approach for cross over -- needs testing
+    def generation_crossover(self):
 
-        hr = self.get_highest_reward()
-        ht = self.get_highest_time_alive()
-        # print(hr.episode, ht.episode)
+        # if we have no "Good" memories
+        if not len(self.Memory) > 2:
+            return
 
-        new_H_W = np.add(hr.H_W, ht.H_W)
-        new_O_W = np.add(hr.O_W, ht.O_W)
+        a = random.randrange(len(self.Memory))
+        parent_a = self.Memory.pop(a)
 
-        # Add variance
-        variance = random.uniform(0.0, 0.2)  # Change as needed
+        b = random.randrange(len(self.Memory))
+        parent_b = self.Memory.pop(b)
 
-        # This will be right
-        # new_H_W = np.devide(new_H_W, 2)
-        # new_O_W = np.devide(new_O_W, 2)
+        crossover_weight = random.random()
 
-        # needs teasting
-        # new_H_W = np.multiply(new_H_W, variance)
-        # new_O_W = np.multiply(new_O_W, variance)
-
-        # new_H_W = new_H_W * variance
-        # new_O_W = new_O_W * variance
-
-        new_H_W = np.round(new_H_W, decimals=3)
-        new_O_W = np.round(new_O_W, decimals=3)
-
-        Genertaion_logger.info(
-            f"Reward: {hr.episode} - Alive: {ht.episode} -- From Reward - Hidden: {hr.H_W[0]} From Alive - Hidden {ht.H_W[0]}"
+        # New Generation weights
+        new_generation_weight_I_H = self.crossover_weights(
+            crossover_weight, parent_a.H_W, parent_b.H_W
         )
 
-        Genertaion_logger.debug(
-            f"New Generation - Hidden Weights: {new_H_W} \n  Output Weights: {new_O_W}"
+        new_generation_weight_H_O = self.crossover_weights(
+            crossover_weight, parent_a.O_W, parent_b.O_W
         )
 
-        self.weights_inputs_to_hidden = new_H_W
-        self.weights_hidden_to_output = new_O_W
+        # Mutation
+        mutation_chance = random.uniform(0.0, 1.0)
+        mutation_threshold = 0.75
 
-    def get_highest_reward(self) -> dataclass:
+        self.weights_inputs_to_hidden = new_generation_weight_I_H
+        self.weights_hidden_to_output = new_generation_weight_H_O
+
+        # if mutation_chance > mutation_threshold:
+        #    self.apply_mutation()
+
+    # working on this < -----
+    def apply_mutaion(self, weights: np.array) -> np.array:
+        pass
+
+    def crossover_weights(
+        self, crossover_weight: float, weight_a: np.array, weight_b: np.array
+    ) -> np.array:
         """
-        Get the memory with the highest reward
+        Generates new weights based on two given weights(np.arrays)
+
+        :param crossover_weight: Float, current weights multiplied against
+        :param weight_a: np.array, multiplied by crossover_weight
+        :param weight_b: np.array, multiplied by 1 - crossover_weight
         """
-        highest_reward = 0
-        highest_reward_memory: self.MemoryInstance = dataclass
 
-        for m in self.Memory:
-            if m.reward > highest_reward:
-                highest_reward = m.reward
-                highest_reward_memory = m
+        # crossover_weight * weight_a
+        weight_a = [[x * crossover_weight for x in y] for y in weight_a]
 
-        return highest_reward_memory
+        crossover_weight = 1 - crossover_weight
 
-    def get_highest_time_alive(self) -> dataclass:
-        """
-        Get reward with the highest time alive
-        """
-        highest_talive = 0
-        highest_t_alive_memory: self.MemoryInstance = dataclass
+        # (1 - crossover_weight) * weight_b
+        weight_b = [[x * crossover_weight for x in y] for y in weight_b]
 
-        for m in self.Memory:
-            if m.t_alive > highest_talive:
-                highest_talive = m.t_alive
-                highest_t_alive_memory = m
+        crossover_weights = np.add(weight_a, weight_b)
 
-        return highest_t_alive_memory
+        crossover_weights = np.round(crossover_weights, decimals=3)
+
+        return crossover_weights
 
     def commit_to_memory(self, episode: int, reward: float, time_alive: int):
         """
