@@ -39,11 +39,36 @@ Take a base set of weights
 - m = random number between 0 - 1 
 
 - Add random mutation 
-- Geerate a number between 0-1, if it is above a set threshold mutate
+- Generate a number between 0-1, if it is above a set threshold mutate
 - Mutate will adjust a random weight in the ngen by +/- 10% 
 
  -- past a certain point all the randomness comes from the mutation of the new generation 
     , not from generating completley new weights 
+
+
+
+-- Handling generations 
+- Load x number of "Fit" objects into memory
+- From the fit objects create x new objects
+- run again on new objects until x new objects are considered "Fit"
+- repeat 
+
+Idea  ... get 10, make 10, get 10,  make 10 <- apply mutation randomly 
+
+Run the new generations until we have 10 that are "Elite", inc the mutation 
+- then use that new 10 to build the next generation
+
+process 
+
+ - Run until 10 in memory
+ - Save the 10 to "Selected for new generation"
+ - run using combinations of "Selected for new generation" and save to memory
+ - Once we have 10 in memory, repeat process
+
+
+ TO DO 
+ Reduce the reward for returning to the same location 
+
 """
 
 
@@ -52,6 +77,9 @@ class Brain:
         self.nrow, self.ncol, self.agent_state, self.env = init_data
         self.agent_coords = self.to_coords(self.agent_state, self.ncol)
         self.Memory: list[dataclass] = []
+        self.New_Generation_Parents: list[dataclass] = []
+
+        self.New_Generation_Threshold: int = 10
 
         self.build_network()
 
@@ -161,20 +189,27 @@ class Brain:
 
     # Show if new generation is possible
     def generation_possible(self) -> bool:
-        return True if len(self.Memory) >= 2 else False
+        """
+        Check if a new generation is possible
+        Gneration Possible if enough objects are in memory i.e have passed the "Elite" threshold
+
+        """
+
+        return True if len(self.Memory) >= self.New_Generation_Threshold else False
+
+    def start_new_generation(self):
+        # Move Memory to New_Gen_Parents
+        # Will now build weights fron new gen parents
+
+        self.New_Generation_Parents = self.Memory
+        self.clear_memory()
 
     # This approach for cross over -- needs testing
     def generation_crossover(self):
 
-        # if we have no "Good" memories
-        if not len(self.Memory) > 2:
-            return
-
-        a = random.randrange(len(self.Memory))
-        parent_a = self.Memory.pop(a)
-
-        b = random.randrange(len(self.Memory))
-        parent_b = self.Memory.pop(b)
+        # testing this approach
+        parent_a, parent_b = random.choices(self.New_Generation_Parents, k=2)
+        # parent_b = random.choice(self.Memory)
 
         crossover_weight = random.random()
 
@@ -187,19 +222,39 @@ class Brain:
             crossover_weight, parent_a.O_W, parent_b.O_W
         )
 
-        # Mutation
-        mutation_chance = random.uniform(0.0, 1.0)
-        mutation_threshold = 0.75
-
         self.weights_inputs_to_hidden = new_generation_weight_I_H
         self.weights_hidden_to_output = new_generation_weight_H_O
 
-        # if mutation_chance > mutation_threshold:
-        #    self.apply_mutation()
+        # Mutation -- needs testing
+        mutation_chance = random.uniform(0.0, 1.0)
+        mutation_threshold = 0.75
 
-    # working on this < -----
-    def apply_mutaion(self, weights: np.array) -> np.array:
-        pass
+        if mutation_chance > mutation_threshold:
+            a, b = self.apply_mutation(
+                new_generation_weight_I_H, new_generation_weight_H_O
+            )
+            self.weights_inputs_to_hidden = a
+            self.weights_hidden_to_output = b
+            # print("Applied mutation")
+
+    # working on this < ----- needs cleaning up
+    def apply_mutation(self, weights_a: np.array, weights_b: np.array) -> np.array:
+        """
+        Randomly select a weight and "mutate it by +/- 10%"
+        """
+        select_weight_set = weights_a
+
+        holder = select_weight_set.shape
+
+        x = random.randrange(holder[0])
+        y = random.randrange(holder[1])
+
+        weight = select_weight_set[x][y]
+        mutated_weight = weight - (weight / 10)  # hard coded to reduce on mutaion
+
+        select_weight_set[x][y] = mutated_weight
+
+        return select_weight_set, weights_b
 
     def crossover_weights(
         self, crossover_weight: float, weight_a: np.array, weight_b: np.array
@@ -242,6 +297,8 @@ class Brain:
     def clear_memory(self):
         self.Memory = []
 
+    # // ------------------------------------------------// Dataclasses
+
     @dataclass
     class MemoryInstance:
         """
@@ -251,6 +308,15 @@ class Brain:
         episode: int
         reward: float
         t_alive: int
+        H_W: np.array
+        O_W: np.array
+
+    @dataclass
+    class GenerationInstance:
+        """
+        Dataclass to store the weights of a new Generation
+        """
+
         H_W: np.array
         O_W: np.array
 
