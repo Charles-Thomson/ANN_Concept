@@ -1,4 +1,4 @@
-import CustomLogging as CL
+import Logging.CustomLogging as CL
 import numpy as np
 
 from dataclasses import dataclass

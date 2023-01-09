@@ -1,7 +1,7 @@
 import numpy as np
 from numpy import dot, append
 import logging
-import CustomLogging as CL
+import Logging.CustomLogging as CL
 from math import fsum
 
 
