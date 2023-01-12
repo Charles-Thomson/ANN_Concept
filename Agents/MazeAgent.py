@@ -3,10 +3,7 @@ import Brains.MazeAgentBrain as brain
 import Logging.CustomLogging as CL
 import logging
 import decimal
-
-# Set precision to a fixed value
-decimal.getcontext().prec = 3
-
+from Agents import SightData
 
 # Basic logging config
 logging.root.setLevel(logging.NOTSET)
@@ -14,91 +11,116 @@ logging.basicConfig(
     level=logging.NOTSET,
 )
 
+# Set precision to a fixed value
+decimal.getcontext().prec = 3
+
 Maze_agent_logger = CL.GenerateLogger(__name__, "PathloggingFile.log")
 Fitness_Logging = CL.GenerateLogger(__name__ + "fitness", "FitnessloggingFile.log")
 
+"""
+    MazeAgent() -> __init__(episodes, env)
+        Init of a new agent
+
+        param: episodes: int : Number of attempts at the env by an agent
+        param: env: object: Environment the agent will use
+
+        var: self.episode : int : Number of attempts at the env by an agent
+        var: self.env : object : object: Environment the agent will use
+        var: self.agent_state : int : Te current state of the agent in the env 
+        var: self.nrow : int : number of rows in the enviroment
+        var: self.ncol : int : number of columns in the enviroment
+        var: self.brain : object : Brain instance used by this agent
+
+        call: self.run_agent() : Start the agent - start learning
+
+    run_agent(episodes, env)
+        The main process of the agent 
+
+        param: episodes: int : Number of attempts at the env by an agent
+        
+        var: using_generations : bool : Indicates if non random weights are being used
+        var: fitness_threshold : float : "Elite" threshold for agent to be considered for new generation
+
+        var: agent_state: int : The current state of the agent
+        var: path : list[int] : The path taken by the agent in the current episode
+        var: reward : float : The accumulated reward by the agent in the current episode
+
+        var: sight_line_data: list[list[float]] : Resulting data of what is visable to the agent along the 8 sightlines
+        var: action : int : The action to be taken based on the sight_line_data 
+        var: ns : int : The new state of the agent following the last action 
+        var: r : float : The reward from the previous action
+        var: i : list : Requierment of Gym - not used
+        var: t : bool : Indecates if the last action resulted in termination of the agent in this episode
+        var: g : bool : Indecates if the last action resulted in reaching the "goal" state
+
+
+"""
+
 
 class MazeAgent:
-    def __init__(self, agent_start_state, EPISODES):
-        self.EPISODES = EPISODES
-        self.env = env.MazeEnv(agent_start_state)
-        self.agent_state = agent_start_state
-        self.path = []
-        self.fitness_threshold = 1.5
-        print("Running")
+    def __init__(self, episodes: int, env: object):
+        self.env = env
+        self.agent_state = env.get_agent_state()  # Need to create
 
-        self.using_generations = False
+        self.nrow, self.ncol = env.get_env_shape()  # need to create
 
-        nrow = self.env.nrow
-        ncol = self.env.ncol
+        self.brain = brain.Brain()  # Clean up brain needed
 
-        # can be cleaned up
-        brain_init_data = (ncol, nrow, self.agent_state, self.env)
-        self.brain = brain.Brain(brain_init_data)
+        self.run_agent(episodes)
 
-        self.run_agent()
+    def run_agent(self, episodes: int):
+        print("Running")  # debug
 
-    def run_agent(self):
-        for e in range(self.EPISODES):
-            self.agent_state = self.env.reset()
-            self.path = []
+        using_generations = False
+        fitness_threshold = 1.6
+
+        for e in range(episodes):
+            self.env.reset()
+            agent_state = self.env.get_agent_state()
+            path = []
             reward = 1.0
-            fitness = 0.0
 
-            for step in range(self.env.EPISODE_LENGTH):
+            for step in range(self.env.episode_length):
 
-                action = self.brain.process(self.agent_state)
+                sight_line_data = SightData.check_sight_lines(
+                    agent_state, self.nrow, self.ncol, self.env
+                )
 
-                ns: int
-                r: float
-                i: list
-                t: bool
-                g: bool
+                action = self.brain.determine_action(sight_line_data)
 
-                ns, r, i, t, g = self.env.step(self.agent_state, action)
+                ns, r, i, t, g = self.env.step(agent_state, action)
 
                 reward += r
 
                 if t or g is True:
                     break
 
-                self.agent_state = ns
-                self.path.append(ns)
+                agent_state = ns
+                path.append(ns)
 
-            h = "REWARD FOUND" if g is True else ""
-
-            fitness = round(reward, 3)
-
-            if fitness > self.fitness_threshold:
+            if reward > fitness_threshold:
                 self.brain.commit_to_memory(e, reward, step)
 
-            Maze_agent_logger.debug(
-                f"Episode: {e} Length: {self.path} Reward: {reward} Fitness: {fitness} {h}"
-            )
-
-            Fitness_Logging.debug(f"Fitness: {fitness}")
-
-            if self.using_generations == True:
+            if using_generations == True:
                 self.brain.new_current_generation_weights()
             else:
                 self.brain.new_random_weights()
 
             # Check every 5 if new generation possible
-            if e % 5 == 0:
-                if self.brain.generation_possible() is False:
-                    Maze_agent_logger.info("No new Generation")
-                    continue
-
-                self.using_generations = True  # Using gnerations from now
-                self.fitness_threshold += 0.1  # Increase threshold over time ?
-
-                # Start a new generation
-                self.brain.start_new_generation()
+            if e % 5 == 0 and self.brain.new_generation():
+                using_generations = True  # Using gnerations from now
+                fitness_threshold += 0.1  # Increase threshold over time ?
                 self.brain.new_current_generation_weights()
 
                 Maze_agent_logger.info(
-                    f"New Generation - Fitness Threshold: {self.fitness_threshold}"
+                    f"New Generation - Fitness Threshold: {fitness_threshold}"
                 )
+
+            Maze_agent_logger.debug(
+                f"Episode: {e} Length: {path} Reward: {reward} Fitness: {reward} {'REWARD FOUND' if g is True else ''} "
+            )
+
+            Fitness_Logging.debug(f"Fitness: {reward}")
 
 
 if __name__ == "__main__":

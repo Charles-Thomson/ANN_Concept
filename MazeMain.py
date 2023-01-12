@@ -1,33 +1,39 @@
 import Agents.MazeAgent as agent
 import MazeEnvironment.MazeENV as env
 
-
-ENV_MAP = [
-    [2, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-]
-
 """
-    Move the initial creation of the Brains(NN) into the main method then assign
-    to each agent
-     - Removing work on the threads 
-     - Remooving duplicated code in different agent types
+    main() -> __init__(self, episodes, steps)
+        Generate a new instance
 
-     Need an overarching set of weights for each aget type
-     - Adjust weights based on each full run 
-     - Result should be the final set of weights for each agent
-     - Then test on radndom mazes
+        param: episodes: int : Number of attempts at the env by an agent
+        param: steps: int : Number of actions per episode by an agent
+
+    create_agent(episodes, env)
+        Create new agent instance
+
+        param: episodes: int : Number of attempts at the env by an agent
+        param: env: object: Environment the agent will use
+        rtn: agent : object : New agent instance
+
+    create_env(steps)
+        Create new environment instance
+
+        param: steps: int : Number of actions per episode by an agent
+        rtn: env : object : New environemnt instance    
 """
 
 
 class main:
-    def __init__(self):
-        # self.env = env.MazeEnv(MAP, agent_start_state=12)
-        self.agent = agent.MazeAgent(agent_start_state=12, EPISODES=200)
+    def __init__(self, episodes: int, episode_length: int):
+        env = self.create_env(episode_length)
+        agent = self.create_agent(episodes, env)
+
+    def create_agent(self, episodes: int, env: object) -> object:
+        return agent.MazeAgent(episodes, env)
+
+    def create_env(self, episode_length: int) -> object:
+        return env.MazeEnv(episode_length)
 
 
 if __name__ == "__main__":
-    main()
+    main(episodes=200, episode_length=10)

@@ -45,20 +45,9 @@ def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
                 loc = [(row + i, col + i) for i in range(1, nrow - row)]
                 visable_env_data[i] = check_sightline(loc, nrow, ncol, env)
 
-        # print(visable_env_data[i], loc)  # For debug
-
     visable_env_data = list(chain(*visable_env_data))
 
     return visable_env_data
-
-
-# Pass in a list of values to check
-
-"""
-1 -> open
-2 -> obstical
-3 -> goal
-"""
 
 
 def check_sightline(locations: list, nrow: int, ncol: int, env):
@@ -70,7 +59,7 @@ def check_sightline(locations: list, nrow: int, ncol: int, env):
         if not 0 <= x < nrow or not 0 <= y < ncol:
             continue
 
-        value = env.get_location_value_call((x, y))
+        value = get_location_value(env, (x, y))
 
         match value:
             case 1:  # Open
@@ -108,3 +97,10 @@ def to_coords(state: int, ncol: int) -> tuple:
     x = int(state / ncol)
     y = int(state % ncol)
     return (x, y)
+
+
+def get_location_value(env: object, coords: tuple) -> int:
+    map = env.env_map
+    x, y = coords
+    value = map[x][y]
+    return value

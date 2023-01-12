@@ -1,5 +1,9 @@
 import numpy as np
 import random
+import decimal
+
+# Set precision to a fixed value
+decimal.getcontext().prec = 3
 
 """
 Functions used in the creation of new generations
@@ -23,15 +27,15 @@ def generation_crossover(
         crossover_weight, parent_a.O_W, parent_b.O_W
     )
 
-    weights_inputs_to_hidden = new_generation_weight_I_H
-    weights_hidden_to_output = new_generation_weight_H_O
-
     if mutation_check():
-        weights_inputs_to_hidden, weights_hidden_to_output = apply_mutation(
-            new_generation_weight_I_H, new_generation_weight_H_O
-        )
+        random_selection = random.randint(0, 1)
+        if random_selection == 0:
+            new_generation_weight_I_H = apply_mutation(new_generation_weight_I_H)
 
-    return (weights_inputs_to_hidden, weights_hidden_to_output)
+        if random_selection == 1:
+            new_generation_weight_H_O = apply_mutation(new_generation_weight_H_O)
+
+    return (new_generation_weight_I_H, new_generation_weight_H_O)
 
 
 def mutation_check() -> bool:
@@ -42,24 +46,28 @@ def mutation_check() -> bool:
 
 
 # working on this < ----- needs cleaning up
-def apply_mutation(weights_a: np.array, weights_b: np.array) -> np.array:
+def apply_mutation(weights: np.array) -> np.array:
     """
     Randomly select a weight and "mutate it by +/- 10%"
     """
-    select_weight_set = weights_a
 
-    holder = select_weight_set.shape
+    weights_shape = weights.shape
 
     # Select a random col + row
-    x = random.randrange(holder[0])
-    y = random.randrange(holder[1])
+    x = random.randrange(weights_shape[0])
+    y = random.randrange(weights_shape[1])
 
-    weight = select_weight_set[x][y]
-    mutated_weight = weight - (weight / 10)  # hard coded to reduce on mutaion
+    choosen_weight = weights[x][y]
 
-    select_weight_set[x][y] = mutated_weight
+    mutation_amount = random.randint(1, 10)
+    mutated_weight_subtraction = choosen_weight - (choosen_weight / mutation_amount)
+    mutated_weight_addition = choosen_weight + (choosen_weight / mutation_amount)
 
-    return select_weight_set, weights_b
+    mutation = random.choice((mutated_weight_subtraction, mutated_weight_addition))
+
+    weights[x][y] = mutation
+
+    return weights
 
 
 def crossover_weights(
@@ -82,7 +90,5 @@ def crossover_weights(
     weight_b = [[x * crossover_weight for x in y] for y in weight_b]
 
     crossover_weights = np.add(weight_a, weight_b)
-
-    crossover_weights = np.round(crossover_weights, decimals=3)
 
     return crossover_weights
