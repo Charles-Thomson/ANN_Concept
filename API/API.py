@@ -21,7 +21,7 @@ Route used by Flutter UI to pass 'map' data.
 
 from flask import Flask, request
 
-import RNN
+import RNN_OLD.RNN as RNN
 
 app = Flask(__name__)
 

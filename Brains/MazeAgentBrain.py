@@ -4,10 +4,11 @@ from numpy.random import randn
 from math import sqrt
 from numpy import dot
 import random
+from Brains import Generations as Gen
 
 
-from SightData import check_sight_lines
-import CustomLogging as CL
+from Agents.SightData import check_sight_lines
+import Logging.CustomLogging as CL
 
 
 To_H_W_Logging = CL.GenerateLogger(__name__ + "weights", "loggingToHiddenWeights.log")
@@ -79,12 +80,14 @@ class Brain:
         self.Memory: list[dataclass] = []
         self.New_Generation_Parents: list[dataclass] = []
 
-        self.New_Generation_Threshold: int = 10
+        self.New_Generation_Threshold: int = 5
 
         self.build_network()
 
     # // ------------------------------------------------// Build
 
+    # Can maye build this and then assign to an agent
+    # Keeps th threads light weight ?
     def build_network(self):
         # // ---- // Build layers
         self.input_layer = input_layer = np.array([float(i) for i in range(24)])
@@ -120,6 +123,17 @@ class Brain:
             ]
         )
         return weights
+
+    def new_random_weights(self):
+        """
+        Generate new random weights and assign to the weights matrix's
+        """
+        (
+            self.weights_inputs_to_hidden,
+            self.weights_hidden_to_output,
+        ) = self.generate_random_weights(
+            self.weights_inputs_to_hidden, self.weights_hidden_to_output
+        )
 
     def generate_random_weights(self, *weight_sets: np.array) -> list[np.array]:
         std = sqrt(2.0 / len(self.input_layer))  # Not happy about the self call
@@ -157,17 +171,6 @@ class Brain:
         )
         return new_action
 
-    def new_random_weights(self):
-        """
-        Generate new random weights and assign to the weights matrix's
-        """
-        (
-            self.weights_inputs_to_hidden,
-            self.weights_hidden_to_output,
-        ) = self.generate_random_weights(
-            self.weights_inputs_to_hidden, self.weights_hidden_to_output
-        )
-
     def hidden_layer_activation(self):
         layer = self.hidden_layer
         # Applying RElu to each element in hidden layer
@@ -185,102 +188,35 @@ class Brain:
         layer_output = dot(inputs, weights)
         return layer_output
 
-    # // ------------------------------------------------// Generational Learning
+    # // ------------------------------------------------// New Generation
 
-    # Show if new generation is possible
     def generation_possible(self) -> bool:
         """
         Check if a new generation is possible
-        Gneration Possible if enough objects are in memory i.e have passed the "Elite" threshold
+        Generation Possible if enough objects are in memory i.e have passed the "Elite" threshold
 
         """
-
         return True if len(self.Memory) >= self.New_Generation_Threshold else False
 
     def start_new_generation(self):
-        # Move Memory to New_Gen_Parents
-        # Will now build weights fron new gen parents
-
+        """
+        Move the agents that passed the threshold to
+        the new generaition parents
+        """
         self.New_Generation_Parents = self.Memory
         self.clear_memory()
 
-    # This approach for cross over -- needs testing
-    def generation_crossover(self):
-
-        # testing this approach
-        parent_a, parent_b = random.choices(self.New_Generation_Parents, k=2)
-        # parent_b = random.choice(self.Memory)
-
-        crossover_weight = random.random()
-
-        # New Generation weights
-        new_generation_weight_I_H = self.crossover_weights(
-            crossover_weight, parent_a.H_W, parent_b.H_W
+    def new_current_generation_weights(self):
+        """
+        Generate new agent from current new generation parents
+        """
+        new_gen_W_I_H, new_gen_W_H_O = Gen.generation_crossover(
+            New_Generation_Parents=self.New_Generation_Parents
         )
+        self.weights_inputs_to_hidden = new_gen_W_I_H
+        self.weights_hidden_to_output = new_gen_W_H_O
 
-        new_generation_weight_H_O = self.crossover_weights(
-            crossover_weight, parent_a.O_W, parent_b.O_W
-        )
-
-        self.weights_inputs_to_hidden = new_generation_weight_I_H
-        self.weights_hidden_to_output = new_generation_weight_H_O
-
-        # Mutation -- needs testing
-        mutation_chance = random.uniform(0.0, 1.0)
-        mutation_threshold = 0.75
-
-        if mutation_chance > mutation_threshold:
-            a, b = self.apply_mutation(
-                new_generation_weight_I_H, new_generation_weight_H_O
-            )
-            self.weights_inputs_to_hidden = a
-            self.weights_hidden_to_output = b
-            # print("Applied mutation")
-
-    # working on this < ----- needs cleaning up
-    def apply_mutation(self, weights_a: np.array, weights_b: np.array) -> np.array:
-        """
-        Randomly select a weight and "mutate it by +/- 10%"
-        """
-        select_weight_set = weights_a
-
-        holder = select_weight_set.shape
-
-        x = random.randrange(holder[0])
-        y = random.randrange(holder[1])
-
-        weight = select_weight_set[x][y]
-        mutated_weight = weight - (weight / 10)  # hard coded to reduce on mutaion
-
-        select_weight_set[x][y] = mutated_weight
-
-        return select_weight_set, weights_b
-
-    def crossover_weights(
-        self, crossover_weight: float, weight_a: np.array, weight_b: np.array
-    ) -> np.array:
-        """
-        Generates new weights based on two given weights(np.arrays)
-
-        :param crossover_weight: Float, current weights multiplied against
-        :param weight_a: np.array, multiplied by crossover_weight
-        :param weight_b: np.array, multiplied by 1 - crossover_weight
-        """
-
-        # crossover_weight * weight_a
-        weight_a = [[x * crossover_weight for x in y] for y in weight_a]
-
-        crossover_weight = 1 - crossover_weight
-
-        # (1 - crossover_weight) * weight_b
-        weight_b = [[x * crossover_weight for x in y] for y in weight_b]
-
-        crossover_weights = np.add(weight_a, weight_b)
-
-        crossover_weights = np.round(crossover_weights, decimals=3)
-
-        return crossover_weights
-
+    # // ------------------------------------------------// Memory
     def commit_to_memory(self, episode: int, reward: float, time_alive: int):
         """
         Commit a new episode to memory
@@ -311,20 +247,7 @@ class Brain:
         H_W: np.array
         O_W: np.array
 
-    @dataclass
-    class GenerationInstance:
-        """
-        Dataclass to store the weights of a new Generation
-        """
-
-        H_W: np.array
-        O_W: np.array
-
     # // ------------------------------------------------// Helper Functions
-
-    # Save the variables of the brain to file
-    def store_brain_data():
-        pass
 
     # Convert the state -> (x,y) coords
     def to_coords(self, state: int, ncol: int) -> tuple:

@@ -22,7 +22,8 @@ DEFAULT_FORMAT = "%(levelname)s :: %(funcName)s :: %(message)s"
 
 def GenerateLogger(name: __name__, Log_File: str, format: str = DEFAULT_FORMAT):
     new_logger = logging.getLogger(name)
-    handler = logging.FileHandler(filename=Log_File, mode="w")
+    filename = "Logging/" + Log_File
+    handler = logging.FileHandler(filename=filename, mode="w")
     formatter = logging.Formatter(format)
     handler.setFormatter(formatter)
     new_logger.addHandler(handler)

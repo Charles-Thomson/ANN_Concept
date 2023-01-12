@@ -9,11 +9,11 @@ Model based RL is trying to make an action based
                on the future tate of the model
 
 """
-import Maze_ENV_Helper_Functions as HF
+import RNN_OLD.Maze_ENV_Helper_Functions as HF
 import numpy as np
 from gym import Env
 from gym.spaces import Discrete
-import CustomLogging as CL
+import Logging.CustomLogging as CL
 
 actions_by_step_logging = CL.GenerateLogger(
     name=__name__, Log_File="LoggingStepByAction.log"
@@ -22,9 +22,9 @@ actions_by_step_logging = CL.GenerateLogger(
 ENV_MAP = [
     [2, 1, 1, 1, 2],
     [1, 1, 1, 1, 1],
-    [1, 1, 1, 2, 1],
-    [1, 1, 1, 2, 1],
-    [2, 1, 1, 2, 3],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [2, 1, 1, 1, 3],
 ]
 
 
@@ -42,9 +42,12 @@ class MazeEnv(Env):
         self.observation_space = Discrete(nrow * ncol)
         self.action_space = Discrete(9)
 
+        self.goal_reached_flag = False
+
     def reset(self):
         agent_state = self.agent_start_state
         self.EPISODE_LENGTH = self.EPISODE_LENGTH_SET
+        self.goal_reached_flag = False
         return agent_state
 
     def action_mapping(self, action: int, agent_state: int) -> tuple[int, bool]:
@@ -110,19 +113,17 @@ class MazeEnv(Env):
         value_at_state = HF.get_loaction_value(
             self.map, HF.to_coords(agent_state, self.ncol)
         )
-        reward = 0
 
         match value_at_state:
             case 1:  # Open Tile
-                reward = 0.1 + self.EPISODE_LENGTH / 100
+                return 0.1 + self.EPISODE_LENGTH / 100
 
             case 2:  # Obstical
-                reward = 0
+                return 0
 
             case 3:  # goal
-                reward = 100
-
-        return reward
+                self.goal_reached_flag = True
+                return 100
 
     def step(self, agent_state: int, action: int) -> tuple[int, float, list, bool]:
         i: list = []
@@ -133,7 +134,7 @@ class MazeEnv(Env):
         r: int = self.calculate_reward(agent_state)
 
         # No reward for the "stay" action
-        if ns == agent_state:
+        if action == 4:
             r = 0
 
         if t_a or t_b:
@@ -145,7 +146,13 @@ class MazeEnv(Env):
             f"Agent State: {agent_state} - Action: {action} - New State: {ns} - Termination: {t} "
         )
 
-        return ns, r, i, t
+        # Goal flag testing
+        g = self.goal_reached_flag
+
+        if g is True:
+            t = True
+
+        return ns, r, i, t, g
 
     def termination_check(self, ns: int) -> bool:
 
@@ -159,7 +166,6 @@ class MazeEnv(Env):
         ]
 
         if any(TERMINATION_CONDITIONS):
-            # print("Termination in main check")
             return True
 
         return False
@@ -171,16 +177,3 @@ class MazeEnv(Env):
         map = self.map
         value = HF.get_loaction_value(map, coords)
         return value
-
-    def to_coords_call(self, state: int) -> tuple:
-        ncol = self.ncol
-        coords = HF.to_coords(state, ncol)
-        return coords
-
-    def to_state_call(self, coords: tuple) -> int:
-        ncol = self.ncol
-        state = HF.to_state(coords, ncol)
-        return state
-
-
-MazeEnv(agent_start_state=12)

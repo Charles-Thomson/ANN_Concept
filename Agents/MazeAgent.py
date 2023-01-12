@@ -1,7 +1,11 @@
-import MazeENV as env
-import MazeAgentBrain as brain
-import CustomLogging as CL
+import MazeEnvironment.MazeENV as env
+import Brains.MazeAgentBrain as brain
+import Logging.CustomLogging as CL
 import logging
+import decimal
+
+# Set precision to a fixed value
+decimal.getcontext().prec = 3
 
 
 # Basic logging config
@@ -15,19 +19,21 @@ Fitness_Logging = CL.GenerateLogger(__name__ + "fitness", "FitnessloggingFile.lo
 
 
 class MazeAgent:
-    def __init__(self, agent_state):
-        self.EPISODES = 1000
-        self.env = env.MazeEnv(agent_state)
-        self.agent_state = agent_state
-        self.nrow = self.env.nrow
-        self.ncol = self.env.ncol
+    def __init__(self, agent_start_state, EPISODES):
+        self.EPISODES = EPISODES
+        self.env = env.MazeEnv(agent_start_state)
+        self.agent_state = agent_start_state
         self.path = []
         self.fitness_threshold = 1.5
         print("Running")
 
         self.using_generations = False
 
-        brain_init_data = (self.ncol, self.nrow, self.agent_state, self.env)
+        nrow = self.env.nrow
+        ncol = self.env.ncol
+
+        # can be cleaned up
+        brain_init_data = (ncol, nrow, self.agent_state, self.env)
         self.brain = brain.Brain(brain_init_data)
 
         self.run_agent()
@@ -47,27 +53,20 @@ class MazeAgent:
                 r: float
                 i: list
                 t: bool
+                g: bool
 
-                ns, r, i, t = self.env.step(self.agent_state, action)
-
-                if t is True:
-                    # print("Termination")  # Used for debug
-                    self.path.append(ns)
-                    break
+                ns, r, i, t, g = self.env.step(self.agent_state, action)
 
                 reward += r
-                reward = round(reward, 3)  # Keep to meaningful values
+
+                if t or g is True:
+                    break
+
                 self.agent_state = ns
                 self.path.append(ns)
 
-            h = ""
+            h = "REWARD FOUND" if g is True else ""
 
-            if reward > 100:
-                h = "REWARD FOUND"
-
-            # Commit to memory the "best" in terms of reward or time alive
-
-            # Does step need to be considered for fitness ?
             fitness = round(reward, 3)
 
             if fitness > self.fitness_threshold:
@@ -80,22 +79,26 @@ class MazeAgent:
             Fitness_Logging.debug(f"Fitness: {fitness}")
 
             if self.using_generations == True:
-                self.brain.generation_crossover()
+                self.brain.new_current_generation_weights()
             else:
                 self.brain.new_random_weights()
 
-            # Check every 5 runs if we have enough in memory for new generation
+            # Check every 5 if new generation possible
             if e % 5 == 0:
-                if self.brain.generation_possible():  # if there is enough in memeory
-                    self.using_generations = True  # Using gnerations from now
-                    self.fitness_threshold += 0.1  # Increase threshold over time ?
-                    # Start a new generation
-                    self.brain.start_new_generation()
-                    Maze_agent_logger.info(
-                        f"New Generation - Fitness Thresholg: {self.fitness_threshold}"
-                    )
-                else:
+                if self.brain.generation_possible() is False:
                     Maze_agent_logger.info("No new Generation")
+                    continue
+
+                self.using_generations = True  # Using gnerations from now
+                self.fitness_threshold += 0.1  # Increase threshold over time ?
+
+                # Start a new generation
+                self.brain.start_new_generation()
+                self.brain.new_current_generation_weights()
+
+                Maze_agent_logger.info(
+                    f"New Generation - Fitness Threshold: {self.fitness_threshold}"
+                )
 
 
 if __name__ == "__main__":
