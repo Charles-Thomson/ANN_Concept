@@ -1,0 +1,354 @@
+DEBUG :: generation_crossover :: Parent A: [ 0.11 -0.05 -0.4  -0.24 -0.05  0.26  0.27  0.03  0.18] Parent B: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.79  0.02] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.03  0.18] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.34 -0.09  0.09  0.22 -0.23 -0.1   0.52 -0.34] Parent B: [ 0.17  0.11  0.41 -0.25  0.6  -0.1  -0.28  0.28 -0.14] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.34 -0.09 -0.25  0.22 -0.1  -0.1   0.52 -0.34] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.79  0.02] Parent B: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.03  0.18] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.79  0.02] 
+DEBUG :: generation_crossover :: Parent A: [ 0.17  0.11  0.41 -0.25  0.6  -0.1  -0.28  0.28 -0.14] Parent B: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.03  0.18] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.17  0.11  0.04 -0.25  0.6   0.3  -0.23  0.03 -0.14] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.34 -0.09 -0.25  0.22 -0.1  -0.1   0.52 -0.34] Parent B: [-0.02 -0.13  0.12 -0.2   0.04 -0.19  0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.08 -0.27 -0.26  0.3  -0.14  0.31  0.29  0.53 -0.23] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.27 -0.26 -0.2   0.04  0.31  0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.03  0.18] Parent B: [-0.02 -0.13  0.12 -0.2   0.04 -0.19  0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [-0.02  0.09  0.12 -0.18  0.04 -0.19  0.11  0.03  0.18] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.79  0.02] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.01  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79  0.02] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79  0.02] Parent B: [ 0.17  0.11  0.04 -0.25  0.6   0.3  -0.23  0.03 -0.14] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.01  0.11 -0.09 -0.25 -0.35  0.3  -0.23  0.03 -0.14] 
+DEBUG :: generation_crossover :: Parent A: [ 0.17  0.11  0.04 -0.25  0.6   0.3  -0.23  0.03 -0.14] Parent B: [ 0.05 -0.27 -0.26 -0.2   0.04  0.31  0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.11 -0.26 -0.2   0.04  0.3  -0.23  0.03 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.27 -0.26 -0.2   0.04  0.31  0.11  0.53 -0.23] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [-0.02  0.09  0.12 -0.18  0.04 -0.19  0.11  0.03  0.18] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [-0.02  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.    0.18] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.11 -0.26 -0.2   0.04  0.3  -0.23  0.03 -0.23] Parent B: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.27 -0.26 -0.2   0.04  0.3  -0.23  0.03 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [-0.02  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.    0.18] Parent B: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.27 -0.26 -0.2   0.04  0.3  -0.23  0.03 -0.23] Parent B: [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2   0.04  0.3   0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] Parent B: [-0.02 -0.13  0.12 -0.2   0.04 -0.19  0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] Parent B: [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2   0.04  0.3   0.11  0.53 -0.23] Parent B: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.23] Parent B: [ 0.01  0.11 -0.09 -0.25 -0.35  0.3  -0.23  0.03 -0.14] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.11 -0.09 -0.25 -0.35 -0.1  -0.23  0.   -0.14] 
+DEBUG :: generation_crossover :: Parent A: [-0.02 -0.13  0.12 -0.2   0.04 -0.19  0.11  0.   -0.06] Parent B: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.13  0.12 -0.2   0.04 -0.1   0.11  0.   -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.27 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.23] Parent B: [ 0.05 -0.13  0.12 -0.2   0.04 -0.1   0.11  0.   -0.23] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.23] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2   0.04 -0.19  0.11  0.53 -0.23] Parent B: [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] Parent B: [ 0.01  0.11 -0.09 -0.25 -0.35  0.3  -0.23  0.03 -0.14] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [-0.02 -0.13 -0.09 -0.2   0.04  0.3   0.11  0.03 -0.14] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.23] Parent B: [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.11 -0.09 -0.25 -0.35 -0.1  -0.23  0.   -0.14] Parent B: [ 0.01  0.11 -0.09 -0.25 -0.35  0.3  -0.23  0.03 -0.14] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.11 -0.09 -0.25 -0.35 -0.1  -0.23  0.   -0.14] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.   -0.06] Parent B: [ 0.01  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79  0.02] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2   0.04  0.3   0.11  0.53 -0.23] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79  0.02] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [-0.02  0.09  0.12 -0.18  0.04 -0.19  0.11  0.03  0.18] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09  0.12 -0.2   0.04 -0.19  0.11  0.79  0.18] 
+DEBUG :: generation_crossover :: Parent A: [-0.02 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.01  0.09  0.04 -0.18 -0.35  0.3  -0.23  0.79  0.02] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.01  0.09 -0.09 -0.2   0.04  0.3   0.11  0.53  0.02] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09  0.12 -0.2   0.04 -0.19  0.11  0.79  0.18] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2   0.04 -0.1   0.11  0.53  0.18] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05 -0.13 -0.09 -0.2   0.04 -0.1   0.11  0.53 -0.06] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.53 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35  0.3   0.11  0.79 -0.06] Parent B: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05   0.09  -0.09  -0.2   -0.35  -0.1    0.11   0.79  -0.048] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
+DEBUG :: generation_crossover :: Parent A: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] Parent B: [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] , Parents_available: 6
+DEBUG :: generation_crossover :: Resulting new weight : [ 0.05  0.09 -0.09 -0.2  -0.35 -0.1   0.11  0.79 -0.06] 
