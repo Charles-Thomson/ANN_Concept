@@ -1,9 +1,10 @@
-import MazeEnvironment.MazeENV as env
 import Brains.MazeAgentBrain as brain
 import Logging.CustomLogging as CL
 import logging
 import decimal
 from Agents import SightData
+import HyperPerameters
+import csv
 
 # Basic logging config
 logging.root.setLevel(logging.NOTSET)
@@ -12,10 +13,20 @@ logging.basicConfig(
 )
 
 # Set precision to a fixed value
-decimal.getcontext().prec = 3
+decimal.getcontext().prec = 5
 
-Maze_agent_logger = CL.GenerateLogger(__name__, "PathloggingFile.log")
+Input_layer_logging = CL.GenerateLogger(
+    __name__ + "inputLayer", "loggingInputLayer.log"
+)
+Maze_agent_logger_format = "%(levelname)-8s:: %(message)s"
+Maze_agent_logger = CL.GenerateLogger(
+    __name__, "PathloggingFile.log", Maze_agent_logger_format
+)
 Fitness_Logging = CL.GenerateLogger(__name__ + "fitness", "FitnessloggingFile.log")
+
+Full_Maze_agent_logger = CL.GenerateLogger(
+    __name__ + "FullAgentData", "FullAgentData.log", Maze_agent_logger_format
+)
 
 """
     MazeAgent() -> __init__(episodes, env)
@@ -60,24 +71,30 @@ Fitness_Logging = CL.GenerateLogger(__name__ + "fitness", "FitnessloggingFile.lo
 class MazeAgent:
     def __init__(self, episodes: int, env: object):
         self.env = env
-        self.agent_state = env.get_agent_state()  # Need to create
+        self.agent_state = env.get_agent_state()
 
-        self.nrow, self.ncol = env.get_env_shape()  # need to create
+        self.nrow, self.ncol = env.get_env_shape()
 
-        self.brain = brain.Brain()  # Clean up brain needed
+        self.brain = brain.Brain()
 
         self.run_agent(episodes)
 
     def run_agent(self, episodes: int):
         print("Running")  # debug
+        self.env.reset()
 
         using_generations = False
-        fitness_threshold = 1.6
+        fitness_threshold = HyperPerameters.fitness_threshold
+
+        f = open("test.csv", "w")
+        writer = csv.writer(f)
+        header = ["Episode", "Reward", "Threshold"]
+        writer.writerow(header)
 
         for e in range(episodes):
-            self.env.reset()
+            # self.env.reset()
             agent_state = self.env.get_agent_state()
-            path = []
+            path = [agent_state]
             reward = 1.0
 
             for step in range(self.env.episode_length):
@@ -86,19 +103,35 @@ class MazeAgent:
                     agent_state, self.nrow, self.ncol, self.env
                 )
 
+                # Input_layer_logging.debug(
+                #     f" Agent state: {agent_state} Open Data: {sight_line_data[0::3]}"
+                # )
+
+                # Input_layer_logging.debug(
+                #     f" Agent state: {agent_state} Obs  Data: {sight_line_data[1::3]}"
+                # )
+
+                # Input_layer_logging.debug(
+                #     f" Agent state: {agent_state} Goal Data: {sight_line_data[2::3]}"
+                # )
+
                 action = self.brain.determine_action(sight_line_data)
 
-                ns, r, i, t, g = self.env.step(agent_state, action)
+                ns, r, i, t = self.env.step(agent_state, action)
 
                 reward += r
 
-                if t or g is True:
+                if t is True:
+                    self.env.reset()
+                    path.append(ns)
                     break
 
                 agent_state = ns
                 path.append(ns)
 
-            if reward > fitness_threshold:
+            # fitness = reward / (step + 1)
+
+            if reward >= fitness_threshold:
                 self.brain.commit_to_memory(e, reward, step)
 
             if using_generations == True:
@@ -108,19 +141,31 @@ class MazeAgent:
 
             # Check every 5 if new generation possible
             if e % 5 == 0 and self.brain.new_generation():
-                using_generations = True  # Using gnerations from now
-                fitness_threshold += 0.1  # Increase threshold over time ?
+                using_generations = True
+                fitness_threshold += HyperPerameters.fitness_threshold_increase
                 self.brain.new_current_generation_weights()
 
                 Maze_agent_logger.info(
                     f"New Generation - Fitness Threshold: {fitness_threshold}"
                 )
 
+            ter = i[0]
+            stringed_path = [str(x) for x in path]
+            string_path = ", ".join(stringed_path)
+
             Maze_agent_logger.debug(
-                f"Episode: {e} Length: {path} Reward: {reward} Fitness: {reward} {'REWARD FOUND' if g is True else ''} "
+                f"Episode: {e:3} {'Path':>5} {string_path:50s} Reward: {reward:5f}"
             )
 
-            Fitness_Logging.debug(f"Fitness: {reward}")
+            Full_Maze_agent_logger.debug(
+                f"Episode: {e:3} {'Path':>5} {string_path:50s} Length: {len(path):2}  Action: {action:2}  Reward: {reward:5f}   i: {ter:15}  "
+            )
+
+            writer.writerow([e, reward, fitness_threshold])
+
+            Fitness_Logging.debug(f"Fitness: {reward} Threshold: {fitness_threshold}")
+        # close the csv
+        f.close()
 
 
 if __name__ == "__main__":

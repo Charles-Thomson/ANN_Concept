@@ -1,5 +1,6 @@
 import Agents.MazeAgent as agent
 import MazeEnvironment.MazeENV as env
+import HyperPerameters
 
 """
     main() -> __init__(self, episodes, steps)
@@ -25,6 +26,7 @@ import MazeEnvironment.MazeENV as env
 
 class main:
     def __init__(self, episodes: int, episode_length: int):
+
         env = self.create_env(episode_length)
         agent = self.create_agent(episodes, env)
 
@@ -36,4 +38,4 @@ class main:
 
 
 if __name__ == "__main__":
-    main(episodes=200, episode_length=10)
+    main(HyperPerameters.episodes, HyperPerameters.episode_length)

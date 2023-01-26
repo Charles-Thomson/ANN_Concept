@@ -2,21 +2,13 @@ import numpy as np
 from gym import Env
 from Decorator import __init__reset
 import copy
+import HyperPerameters
 
 import Logging.CustomLogging as CL
 
 actions_by_step_logging = CL.GenerateLogger(
     name=__name__, Log_File="LoggingStepByAction.log"
 )
-
-ENV_MAP = [
-    [2, 1, 1, 1, 2],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [2, 1, 1, 1, 3],
-]
-AGENT_START_STATE = 12
 
 
 """
@@ -137,19 +129,23 @@ class MazeEnv(Env):
     @resettable
     def __init__(
         self,
-        episode_length: int = 10,
-        env_map: list = ENV_MAP,
-        agent_start_state: int = AGENT_START_STATE,
+        episode_length: int = HyperPerameters.episode_length,
+        env_map: list = HyperPerameters.ENV_MAP,
+        agent_start_state: int = HyperPerameters.agent_start_state,
     ):
         self.env_map = np.array(env_map)
         self.nrow, self.ncol = self.env_map.shape
+        print(self.nrow, self.ncol)
         self.agent_state = agent_start_state
         self.episode_length = episode_length
-        self.goal_reached_flag = False
         self.states_visited = []
 
     def reset(self):
-        self.__init__()
+        actions_by_step_logging.debug(f"/n ")
+        self.agent_state = HyperPerameters.agent_start_state
+        self.episode_length = HyperPerameters.episode_length
+        self.states_visited = []
+        # self.__init__()
 
     def get_agent_state(self) -> int:
         return self.agent_state
@@ -207,34 +203,29 @@ class MazeEnv(Env):
                 return 0
 
             case 3:  # goal
-                self.goal_reached_flag = True
-                return 100
+                return 3
 
     def step(self, agent_state: int, action: int) -> tuple[int, float, list, bool]:
+
+        self.i: list = []
 
         self.episode_length -= 1
         new_hrow, new_hcol = self.action_mapping(action, agent_state)
 
         t: bool = self.termination_check(new_hrow, new_hcol)
 
-        ns: int = agent_state if t else self.to_state((new_hrow, new_hcol), self.ncol)
+        ns: int = self.to_state((new_hrow, new_hcol), self.ncol)
+        # ns: int = agent_state if t else self.to_state((new_hrow, new_hcol), self.ncol)
 
-        r: int = 0 if t or action == 4 else self.calculate_reward(agent_state)
-
-        if self.states_used(ns):
-            r = 0
-
-        g: bool = self.goal_reached_flag
-
-        if g:
-            r = 100
-
-        i: list = []
+        r: int = (
+            0 if self.states_used(agent_state) else self.calculate_reward(agent_state)
+        )
 
         actions_by_step_logging.debug(
-            f"Agent State: {agent_state} - Action: {action} - New State: {ns} - Termination: {t} "
+            f"Agent State: {agent_state} - Action: {action} - New State: {ns} - Termination: {t} Reward: {r} row,col {new_hrow, new_hcol}"
         )
-        return ns, r, i, t, g
+
+        return ns, r, self.i, t
 
     def states_used(self, state: int) -> bool:
         if state in self.states_visited:
@@ -243,21 +234,22 @@ class MazeEnv(Env):
         self.states_visited.append(state)
         return False
 
-    # reurn True if terminating
     def termination_check(self, new_hrow: int, new_hcol: int) -> bool:
 
         TERMINATION_CONDITIONS = [
-            (0 >= new_hrow),
+            (0 > new_hrow),
             (new_hrow >= self.ncol),
-            (0 >= new_hcol),
+            (0 > new_hcol),
             (new_hcol >= self.nrow),
-            (self.episode_length <= 0),
+            (self.episode_length == 0),
         ]
 
         if any(TERMINATION_CONDITIONS):
+            self.i.append(f"Termination: Bounds/Episode   - {new_hrow} / {new_hcol}")
             return True
 
         if self.get_loaction_value(self.env_map, (new_hrow, new_hcol)) == 2:
+            self.i.append(f"Termination: Obstical - {new_hrow} / {new_hcol}")
             return True
 
         return False

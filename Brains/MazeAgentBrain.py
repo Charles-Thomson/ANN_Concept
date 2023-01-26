@@ -5,6 +5,7 @@ from numpy.random import randn
 from math import sqrt
 from numpy import dot
 from Brains import Generations as Gen
+import HyperPerameters
 
 # Set precision to a fixed value
 decimal.getcontext().prec = 3
@@ -32,12 +33,16 @@ Genertaion_logger = CL.GenerateLogger(
     __name__ + "Generation", "LoggingNewGenerations.log"
 )
 
+New_generation_weights_logger = CL.GenerateLogger(
+    __name__ + "NewGenWeights", "loggingNewGenerationWeights.log"
+)
+
 
 class Brain:
     def __init__(self):
         self.Memory: list[dataclass] = []
         self.New_Generation_Parents: list[dataclass] = []
-        self.New_Generation_Threshold: int = 5
+        self.New_Generation_Threshold: int = HyperPerameters.New_Generation_Threshold
 
         self.build_network()
 
@@ -99,41 +104,6 @@ class Brain:
 
     # // ------------------------------------------------// # Process
 
-    # def process(self, sight_line_data: list):
-    #     self.input_layer = sight_line_data
-
-    #     self.hidden_layer = self.calculate_layer(
-    #         self.input_layer, self.weights_inputs_to_hidden
-    #     )
-    #     self.hidden_layer_activation()
-
-    #     self.output_layer = self.calculate_layer(
-    #         self.hidden_layer, self.weights_hidden_to_output
-    #     )
-    #     new_action = self.output_layer_activation()
-
-    #     # Layer logging can go here if needed
-
-    #     return new_action
-
-    # def hidden_layer_activation(self):
-    #     layer = self.hidden_layer
-    #     # Applying RElu to each element in hidden layer
-    #     layer = [np.maximum(0, x) for x in np.nditer(layer)]
-    #     self.hidden_layer = np.array(layer)
-
-    # def output_layer_activation(self):
-    #     layer = self.output_layer
-    #     # applying sofmax to output layer to return final value
-    #     e = np.exp(layer)
-    #     layer = e / e.sum()
-    #     return np.argmax(layer)
-
-    # def calculate_layer(self, inputs: np.array, weights: np.array) -> np.array:
-    #     layer_output = dot(inputs, weights)
-    #     return layer_output
-
-    # Working on this new approach to replace above and the generation of the inital layers
     def determine_action(self, sight_line_data: np.array) -> int:
 
         hidden_layer = self.layer_calculation(
@@ -173,6 +143,9 @@ class Brain:
         if len(self.Memory) >= self.New_Generation_Threshold:
             self.New_Generation_Parents = self.Memory
             self.clear_memory()
+            Genertaion_logger.debug(
+                f"Generation_Parents: {self.New_Generation_Parents}"
+            )
             return True
         return False
 

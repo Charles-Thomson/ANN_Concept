@@ -1,4 +1,5 @@
 from itertools import chain
+import numpy as np
 
 
 def check_sight_lines(agent_state: int, nrow: int, ncol: int, env):
@@ -61,35 +62,73 @@ def check_sightline(locations: list, nrow: int, ncol: int, env):
 
         value = get_location_value(env, (x, y))
 
-        match value:
-            case 1:  # Open
-                if distance == 0:
-                    sightline_data[0] += 1
-                if distance == 1:
-                    sightline_data[0] += 0.6
-                if distance > 1:
-                    sightline_data[0] += 0.2
+        # Does the same as below
+        # index of value - 1 -> 1 = open, stored at index 0 ect
+        input = value / (distance + 1)
+        sightline_data[value - 1] += input
 
-            case 2:  # Obstical, also can't see through said obstical - rethink this
-                if distance == 0:
-                    sightline_data[1] += 1
-                    break
-                if distance == 1:
-                    sightline_data[1] += 0.7
-                    break
-                if distance > 1:
-                    sightline_data[1] += 0.5
-                    break
+        # if distance == 0:
+        #     sightline_data[value - 1] = float(value)
+        # else:
+        #     input = value / (distance + 1)
+        #     sightline_data[value - 1] = input
 
-            case 3:
-                if distance == 0:
-                    sightline_data[2] += 5
-                if distance == 1:
-                    sightline_data[2] += 5
-                if distance > 1:
-                    sightline_data[2] += 5
+        # match value:
+        #     case 1:  # Open
+        #         if distance == 0:
+        #             sightline_data[0] = value
+        #         else:
+        #             input = value / distance
+        #             sightline_data[0] = input
+        #         # if distance == 0:
+        #         #     sightline_data[0] += 1
+        #         # if distance == 1:
+        #         #     sightline_data[0] += 1
+        #         # if distance > 1:
+        #         #     sightline_data[0] += 0.2
 
+        #     case 2:  # Obstical, also can't see through said obstical - rethink this
+        #         if distance == 0:
+        #             sightline_data[1] = value
+        #         else:
+        #             input = value / distance
+        #             sightline_data[1] = input
+        #         # if distance == 0:
+        #         #     sightline_data[1] += 1
+        #         #     break
+        #         # if distance == 1:
+        #         #     sightline_data[1] += 1
+        #         #     break
+        #         # if distance > 1:
+        #         #     sightline_data[1] += 0.5
+        #         #     break
+
+        #     case 3:
+        #         if distance == 0:
+        #             sightline_data[2] = value
+        #         else:
+        #             input = value / distance
+        #             sightline_data[2] = input
+        #         # if distance == 0:
+        #         #     sightline_data[2] += 5
+        #         # if distance == 1:
+        #         #     sightline_data[2] += 5
+        #         # if distance > 1:
+        #         #     sightline_data[2] += 5
+
+        # Value devided by distance ? <- good approach
+        # 1 at 3 = 0.3
+        # 1 at 1 = 1
+        # 3 at 3 = 1
+        # 3 at 1 = 3
+    # sightline_data = [normalise(x) for x in sightline_data]
     return sightline_data
+
+
+def normalise(x) -> float:
+    if x == 0.0:
+        return 0.0
+    return x / np.linalg.norm(x)
 
 
 # Convert the state -> (x,y) coords
