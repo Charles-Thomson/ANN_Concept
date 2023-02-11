@@ -21,7 +21,8 @@ Route used by Flutter UI to pass 'map' data.
 
 from flask import Flask, request
 
-import RNN_OLD.RNN as RNN
+
+import csv
 
 app = Flask(__name__)
 
@@ -38,6 +39,19 @@ def formatinputroute(input_route: str) -> list:
     return route
 
 
+@app.route("/RunData", methods=["GET"])
+def get_RunData() -> dict:
+    data = {}
+    with open("RunData.csv") as f:
+        heading = next(f)
+        csv_reader = csv.reader(f, delimiter=",")
+        for row in csv_reader:
+            data["output"] = row
+
+    return data
+
+
+"""
 @app.route("/MAP", methods=["GET"])
 def pass_MAP() -> dict:
     data = {}
@@ -51,6 +65,7 @@ def pass_MAP() -> dict:
     # data["output"] = [1, 2, 3, 4] #
     return data
 
+"""
 
 if __name__ == "__main__":
     app.run()

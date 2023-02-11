@@ -1,6 +1,7 @@
 import Agents.MazeAgent as agent
 import MazeEnvironment.MazeENV as env
-import HyperPerameters
+import HyperPerameters as HP
+import csv
 
 """
     main() -> __init__(self, episodes, steps)
@@ -29,13 +30,29 @@ class main:
 
         env = self.create_env(episode_length)
         agent = self.create_agent(episodes, env)
+        self.writeHypers()
 
-    def create_agent(self, episodes: int, env: object) -> object:
-        return agent.MazeAgent(episodes, env)
+    def writeHypers(self):
+        with open("RunData.csv", "w", newline="") as f:
+
+            writer = csv.writer(f)
+            header = ["MazeSize", "ObsticalLocations", "GoalLocations", "AgentPath"]
+            writer.writerow(header)
+            writer.writerow(
+                [
+                    HP.map_size_as_states,
+                    HP.obstical_locations,
+                    HP.goal_locations,
+                    HP.agent_path_holer,
+                ]
+            )
 
     def create_env(self, episode_length: int) -> object:
         return env.MazeEnv(episode_length)
 
+    def create_agent(self, episodes: int, env: object) -> object:
+        return agent.MazeAgent(episodes, env)
+
 
 if __name__ == "__main__":
-    main(HyperPerameters.episodes, HyperPerameters.episode_length)
+    main(HP.episodes, HP.episode_length)

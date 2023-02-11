@@ -10,6 +10,10 @@ fitness_threshold_increase = 1.0
 # Env
 agent_start_state = 13
 
+map_size_as_states = [6, 6]
+obstical_locations = [0, 1, 2, 3, 4, 5, 21, 27]
+goal_locations = [28, 8, 10]
+agent_path_holer = [7, 8, 10, 28]
 ENV_MAP = [
     [2, 2, 2, 2, 2, 2],
     [2, 1, 3, 1, 3, 2],
