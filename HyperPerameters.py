@@ -1,3 +1,5 @@
+import numpy as np
+
 episodes = 200
 episode_length = 10
 
@@ -10,13 +12,24 @@ fitness_threshold_increase = 1.0
 # Env
 agent_start_state = 13
 
-map_size_as_states = [6, 6]
-obstical_locations = [0, 1, 2, 3, 4, 5, 21, 27]
-goal_locations = [28, 8, 10]
-agent_path_holer = [7, 8, 10, 28]
+
+def mapData():
+    map = np.array(ENV_MAP)
+    map = map.flatten()
+
+    map_size = [len(ENV_MAP), len(ENV_MAP[0])]
+    obstical_locations = np.where(map == 2)
+    obstical_locations = list(obstical_locations[0])
+
+    goal_locations = np.where(map == 3)
+    goal_locations = list(goal_locations[0])
+
+    return map_size, obstical_locations, goal_locations
+
+
 ENV_MAP = [
-    [2, 2, 2, 2, 2, 2],
-    [2, 1, 3, 1, 3, 2],
+    [2, 2, 2, 1, 2, 2],
+    [2, 1, 3, 2, 3, 2],
     [2, 1, 1, 1, 1, 2],
     [2, 1, 1, 2, 1, 2],
     [2, 1, 1, 2, 3, 2],

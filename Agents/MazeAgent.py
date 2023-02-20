@@ -74,27 +74,34 @@ class MazeAgent:
         self.agent_state = env.get_agent_state()
 
         self.nrow, self.ncol = env.get_env_shape()
+        self.highest_fitness = 0
+        self.highest_fitness_path = []
+        self.highest_fitness_path_rewards = []
 
         self.brain = brain.Brain()
 
         self.run_agent(episodes)
 
+    def get_highest_fitness_path_rewards(self):
+        self.highest_fitness_path_rewards.append(0.0)
+        return self.highest_fitness_path_rewards
+
+    def get_highest_fitness_path(self):
+        return self.highest_fitness_path
+
     def run_agent(self, episodes: int):
-        print("Running")  # debug
+
+        print("Running")
         self.env.reset()
 
         using_generations = False
         fitness_threshold = HyperPerameters.fitness_threshold
 
-        f = open("test.csv", "w")
-        writer = csv.writer(f)
-        header = ["Episode", "Reward", "Threshold"]
-        writer.writerow(header)
-
         for e in range(episodes):
-            # self.env.reset()
+
             agent_state = self.env.get_agent_state()
             path = [agent_state]
+            reward_tracking = [0.0]
             reward = 1.0
 
             for step in range(self.env.episode_length):
@@ -102,18 +109,6 @@ class MazeAgent:
                 sight_line_data = SightData.check_sight_lines(
                     agent_state, self.nrow, self.ncol, self.env
                 )
-
-                # Input_layer_logging.debug(
-                #     f" Agent state: {agent_state} Open Data: {sight_line_data[0::3]}"
-                # )
-
-                # Input_layer_logging.debug(
-                #     f" Agent state: {agent_state} Obs  Data: {sight_line_data[1::3]}"
-                # )
-
-                # Input_layer_logging.debug(
-                #     f" Agent state: {agent_state} Goal Data: {sight_line_data[2::3]}"
-                # )
 
                 action = self.brain.determine_action(sight_line_data)
 
@@ -128,8 +123,14 @@ class MazeAgent:
 
                 agent_state = ns
                 path.append(ns)
+                reward_tracking.append(r)
 
             # fitness = reward / (step + 1)
+
+            if reward >= self.highest_fitness:
+                self.highest_fitness = reward
+                self.highest_fitness_path = path
+                self.highest_fitness_path_rewards = reward_tracking
 
             if reward >= fitness_threshold:
                 self.brain.commit_to_memory(e, reward, step)
@@ -161,11 +162,9 @@ class MazeAgent:
                 f"Episode: {e:3} {'Path':>5} {string_path:50s} Length: {len(path):2}  Action: {action:2}  Reward: {reward:5f}   i: {ter:15}  "
             )
 
-            writer.writerow([e, reward, fitness_threshold])
-
             Fitness_Logging.debug(f"Fitness: {reward} Threshold: {fitness_threshold}")
-        # close the csv
-        f.close()
+
+        # return self.highest_fitness_path
 
 
 if __name__ == "__main__":

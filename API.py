@@ -1,3 +1,5 @@
+import MazeMain
+
 """
 API used to pass data to and from the back end NN and the Flutter application
 
@@ -39,14 +41,41 @@ def formatinputroute(input_route: str) -> list:
     return route
 
 
-@app.route("/RunData", methods=["GET"])
-def get_RunData() -> dict:
+@app.route("/RunMaze")
+def run_Maze():
+    MazeMain.main()
+
+    return "Maze Running"
+
+
+@app.route("/AgentData", methods=["GET"])
+def get_AgentData() -> dict:
     data = {}
-    with open("RunData.csv") as f:
-        heading = next(f)
+    dataHeadings = ["agent_path", "agent_path_rewards"]
+    index = 0
+    with open("AgentData.csv") as f:
         csv_reader = csv.reader(f, delimiter=",")
         for row in csv_reader:
-            data["output"] = row
+            data[dataHeadings[index]] = row
+            index += 1
+
+    return data
+
+
+@app.route("/BuildData", methods=["GET"])
+def get_BuildData() -> dict:
+    data = {}
+    dataHeadings = [
+        "map_size_as_states",
+        "obstical_locations",
+        "goal_locations",
+    ]
+    index = 0
+    with open("BuildData.csv") as f:
+        csv_reader = csv.reader(f, delimiter=",")
+        for row in csv_reader:
+            data[dataHeadings[index]] = row
+            index += 1
 
     return data
 
