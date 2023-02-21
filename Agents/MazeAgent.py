@@ -1,10 +1,11 @@
+from typing import Union
 import Brains.MazeAgentBrain as brain
 import Logging.CustomLogging as CL
 import logging
 import decimal
 from Agents import SightData
 import HyperPerameters
-import csv
+
 
 # Basic logging config
 logging.root.setLevel(logging.NOTSET)
@@ -72,24 +73,19 @@ class MazeAgent:
     def __init__(self, episodes: int, env: object):
         self.env = env
         self.agent_state = env.get_agent_state()
-
         self.nrow, self.ncol = env.get_env_shape()
+        self.episodes = episodes
+
         self.highest_fitness = 0
         self.highest_fitness_path = []
         self.highest_fitness_path_rewards = []
 
         self.brain = brain.Brain()
 
-        self.run_agent(episodes)
+    def get_Highest_Fitness_episode(self) -> Union[list, list]:
+        return self.highest_fitness_path, self.highest_fitness_path_rewards
 
-    def get_highest_fitness_path_rewards(self):
-        self.highest_fitness_path_rewards.append(0.0)
-        return self.highest_fitness_path_rewards
-
-    def get_highest_fitness_path(self):
-        return self.highest_fitness_path
-
-    def run_agent(self, episodes: int):
+    def run_agent(self):
 
         print("Running")
         self.env.reset()
@@ -97,7 +93,7 @@ class MazeAgent:
         using_generations = False
         fitness_threshold = HyperPerameters.fitness_threshold
 
-        for e in range(episodes):
+        for e in range(self.episodes):
 
             agent_state = self.env.get_agent_state()
             path = [agent_state]
@@ -124,8 +120,6 @@ class MazeAgent:
                 agent_state = ns
                 path.append(ns)
                 reward_tracking.append(r)
-
-            # fitness = reward / (step + 1)
 
             if reward >= self.highest_fitness:
                 self.highest_fitness = reward
@@ -163,9 +157,3 @@ class MazeAgent:
             )
 
             Fitness_Logging.debug(f"Fitness: {reward} Threshold: {fitness_threshold}")
-
-        # return self.highest_fitness_path
-
-
-if __name__ == "__main__":
-    MazeAgent(12)

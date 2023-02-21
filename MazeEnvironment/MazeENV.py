@@ -1,6 +1,7 @@
 import numpy as np
 from gym import Env
-from Decorator import __init__reset
+
+# from Decorator import __init__reset
 import copy
 import HyperPerameters
 
@@ -105,14 +106,11 @@ actions_by_step_logging = CL.GenerateLogger(
         param : sate : int : The state in the env to be converted
         param : ncol : int : The numebr of columns in the env map
 
-        rtn : tuple(int, int) : Returns the coordinates of the given state in the env 
-    
+        rtn : tuple(int, int) : Returns the coordinates of the given state in the env
 """
 
 
 def resettable(func):
-    import copy
-
     def __init_and_copy__(self, *args, **kwargs):
         func(self, *args)
         self.__origional_dict__ = copy.copy(self.__dict__)
