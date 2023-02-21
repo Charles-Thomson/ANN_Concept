@@ -21,18 +21,14 @@ Route used by Flutter UI to pass 'map' data.
 
 """
 
-from flask import Flask, request
-
+from flask import Flask
 
 import csv
 
 app = Flask(__name__)
 
-# data = {}
-
 
 def formatinputroute(input_route: str) -> list:
-
     # must format to the correct size - currently in one flat list
     input_route = input_route.lstrip("[").rstrip("]")
     route = input_route.split(",")
@@ -42,40 +38,35 @@ def formatinputroute(input_route: str) -> list:
 
 
 @app.route("/RunMaze")
-def run_Maze():
-    MazeMain.main()
-
-    return "Maze Running"
+def BuildAndRunEnvironment():
+    main = MazeMain.main()
+    main.runAgent()
+    return "Agent active in environment"
 
 
 @app.route("/AgentData", methods=["GET"])
 def get_AgentData() -> dict:
-    data = {}
-    dataHeadings = ["agent_path", "agent_path_rewards"]
-    index = 0
+    data = {"agent_path": "", "agent_path_rewards": ""}
+
     with open("AgentData.csv") as f:
         csv_reader = csv.reader(f, delimiter=",")
-        for row in csv_reader:
-            data[dataHeadings[index]] = row
-            index += 1
+        for key, row in zip(data, csv_reader):
+            data.update({key: row})
 
     return data
 
 
 @app.route("/BuildData", methods=["GET"])
 def get_BuildData() -> dict:
-    data = {}
-    dataHeadings = [
-        "map_size_as_states",
-        "obstical_locations",
-        "goal_locations",
-    ]
-    index = 0
+    data = {
+        "map_size_as_states": "",
+        "obstical_locations": "",
+        "goal_locations": "",
+    }
     with open("BuildData.csv") as f:
         csv_reader = csv.reader(f, delimiter=",")
-        for row in csv_reader:
-            data[dataHeadings[index]] = row
-            index += 1
+        for key, row in zip(data, csv_reader):
+            data.update({key: row})
 
     return data
 
