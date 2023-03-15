@@ -10,7 +10,7 @@ decimal.getcontext().prec = 3
 Functions used in the creation of new generations
 """
 
-parent_logger = CL.GenerateLogger(__name__, "ParentsLogger.log")
+# parent_logger = CL.GenerateLogger(__name__, "ParentsLogger.log")
 
 # This approach for cross over -- needs testing
 def generation_crossover(
@@ -18,9 +18,9 @@ def generation_crossover(
 ) -> tuple():
     parent_a, parent_b = random.choices(New_Generation_Parents, k=2)
 
-    parent_logger.debug(
-        f"Parent A: {parent_a.H_W[0]} Parent B: {parent_b.H_W[0]} , Parents_available: {len(New_Generation_Parents)}"
-    )
+    # parent_logger.debug(
+    #     f"Parent A: {parent_a.H_W[0]} Parent B: {parent_b.H_W[0]} , Parents_available: {len(New_Generation_Parents)}"
+    # )
 
     # crossover_weight = random.random()
 
@@ -38,7 +38,7 @@ def generation_crossover(
 
     new_generation_weight_H_O = cross_over_weights_mergining(parent_a.O_W, parent_b.O_W)
 
-    parent_logger.debug(f"Resulting new weight : {new_generation_weight_I_H[0]} ")
+    # parent_logger.debug(f"Resulting new weight : {new_generation_weight_I_H[0]} ")
 
     if mutation_check():
         random_selection = random.randint(0, 1)

@@ -6,13 +6,11 @@ from math import sqrt
 from numpy import dot
 from Brains import Generations as Gen
 import HyperPerameters
+from Agents.SightData import check_sight_lines
+import Logging.CustomLogging as CL
 
 # Set precision to a fixed value
 decimal.getcontext().prec = 3
-
-
-from Agents.SightData import check_sight_lines
-import Logging.CustomLogging as CL
 
 
 To_H_W_Logging = CL.GenerateLogger(__name__ + "weights", "loggingToHiddenWeights.log")

@@ -213,6 +213,7 @@ class MazeEnv(Env):
         t: bool = self.termination_check(new_hrow, new_hcol)
 
         ns: int = self.to_state((new_hrow, new_hcol), self.ncol)
+
         # ns: int = agent_state if t else self.to_state((new_hrow, new_hcol), self.ncol)
 
         r: int = (

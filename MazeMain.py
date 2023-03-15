@@ -25,13 +25,8 @@ import csv
 """
 
 # Tasks today
-# Seperate out the bulding and the running
-# General clean up
-# pull the auto start out of agent
-# Process: - Init maze, -get build data - run agent - get agent data
-
-# Is the write to csv even needed. Can return
-# the values directly to the API call and handle there
+# Clean up all the logging bs
+# Need to test te front end following the Linting changes
 
 
 class main:
