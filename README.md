@@ -1,6 +1,6 @@
-Artificial Neural Network Processing Project Python
+Concept build for the Artificial Neural Network Project
 
-The aim of the project is to provide back-end processing tools for neural networks.
+The aim of the project is to implement and test back-end processing tools for neural networks.
 
 Agents operate within a defined environment with the objective of gaining the highest "reward" possible. This is achieved by reaching goal nodes in the environment and exploring the environment. Agents that reach a set threshold of reward are selected to be "parents" for the next generation of agents.
 
